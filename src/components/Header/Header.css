@@ -1,0 +1,131 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 74px;
+    background-color: #DDDEE3;
+  }
+
+  .header__link-group {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 70px;
+    gap: 15px;
+  }
+
+  .header__logo {
+    width: 38px;
+    height: 38px;
+    padding-right: 33px;
+  }
+
+  .header__films {
+    text-decoration: none;
+    padding-top: 8px;
+    font-family: Inter;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0em;
+    color: #000000;
+  }
+
+  .header__films:hover {
+    opacity: 70%;
+  }
+
+  .header__films:focus {
+    font-weight: 500;
+  }
+
+  .header__profile-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 70px;
+    gap: 10px;
+    border-radius: 50px;
+    border: 2px solid rgba(0, 0, 0, .1); 
+    background-color: #DDDEE3;
+    padding: 0 10px;
+  }
+
+  .header__profile-group:hover {
+    opacity: 70%;
+  }
+
+  .header__icon-profile {
+    width: 12px;
+    height: 14px;
+  }
+
+  .header__user-profile {
+    text-decoration: none;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    color: #000000;
+  }
+
+  .header__auth-group {
+    display: flex;
+    gap: 30px;
+    padding: 20px 70px;
+  }
+  
+  .header__signup {
+    text-decoration: none;
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    color: #000000;
+    align-self: center;
+  }
+
+  .header__signup:hover {
+    opacity: 70%;
+  }
+
+  .header__signin {
+    width: 76px;
+    height: 32px;
+    border-radius: 3px;
+    background-color: #3456F3;
+    border: none;
+    color: #FFFFFF;
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    cursor: pointer;
+  }
+
+  .header__signin:hover {
+    opacity: 80%;
+  }
+
+  /* @media (max-width: 360px) {
+    .header {
+      padding-top: 28px;
+      margin: 0 0 0 -19px;
+      width: 100vw;
+    }
+  }
+  
+  @media (max-width: 920px) {
+    .header__logo {
+      margin-left: 27px;
+    }
+  }
+  
+  @media (max-width: 360px) {
+    .header__logo {
+      width: 103.74px;
+      height: 24.4px;
+      margin-left: 27px;
+      margin-bottom: 31.6px;
+    }
+  } */
+  
