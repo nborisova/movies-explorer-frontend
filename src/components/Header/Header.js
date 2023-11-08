@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import iconProfile from '../../images/icon-profile.svg'
 
 function Header() {
-  const loggedIn = true;
+  const loggedIn = false;
   const navigate = useNavigate();
 
   function signIn() {
