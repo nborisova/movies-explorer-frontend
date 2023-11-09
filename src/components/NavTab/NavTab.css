@@ -15,3 +15,7 @@
     line-height: 15px;
     color: #000000;
 }
+
+.nav__link:hover {
+    opacity: 70%;
+  }

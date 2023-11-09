@@ -3,8 +3,7 @@
     background-color: #F5F5F5;
     width: 100%;
     display: flex;
-    padding-top: 100px;
-    padding-left: 70px;
+    padding: 100px 70px 0;
     flex-direction: column;
     box-sizing: border-box;
 }
@@ -24,7 +23,7 @@
 
 .techs__line {
     border-bottom: 1px solid #000000;
-    width: 1140px;
+    width: 100%;
     margin-top: 21px;
 }
 
@@ -34,7 +33,6 @@
     justify-content: center;
     align-items: center;
     padding-top: 90px;
-    padding-right: 68px;
     gap: 25px;
 }
 
@@ -67,7 +65,6 @@
 .techs__types {
     display: flex;
     padding-top: 100px;
-    padding-right: 68px;
     justify-content: center;
     gap: 11px;
 }

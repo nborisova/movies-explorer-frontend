@@ -1,0 +1,151 @@
+.about-me {
+    min-height: 1079px;
+    background-color: #FAFAFA;
+    width: 100%;
+    display: flex;
+    padding: 110px 70px 0;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.about-me__header {
+    margin: 0;
+    padding: 0;
+    font-family: Inter;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 26.63px;
+    letter-spacing: -1px;
+    color: #000000;
+    width: 600px;
+    text-align: start;
+}
+
+.about-me__line {
+    border-bottom: 1px solid #000000;
+    width: 100%;
+    margin-top: 21px;
+    box-sizing: border-box;
+}
+
+.about-me__info {
+    display: flex;
+    gap: 270px;
+    padding-top: 65px;
+}
+
+.about-me__description {
+    display: flex;
+    flex-direction: column;
+}
+
+.about-me__name {
+    margin: 0;
+    padding: 0;
+    font-family: Inter;
+    font-size: 50px;
+    font-weight: 400;
+    line-height: 58px;
+    letter-spacing: -1.5px;
+    color: #000000;
+    width: 600px;
+    text-align: start;
+}
+
+.about-me__profession {
+    margin: 0;
+    padding: 20px 0 0 0;
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #000000;
+    width: 600px;
+    text-align: start;
+}
+
+.about-me__bio {
+    margin: 0;
+    padding: 25px 0 0 0;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #000000;
+    width: 600px;
+    text-align: start;
+}
+
+.about-me__git {
+    padding: 100px 0 0 0;
+    text-decoration: none;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16.94px;
+    color: #000000;
+    width: 46px;
+    text-align: start;
+}
+
+.about-me__git:hover {
+    opacity: 70%;
+  }
+
+.about-me__photo {
+    width: 270px;
+    height: 327px;
+}
+
+.about-me__portfolio {
+    display: flex;
+    flex-direction: column;
+}
+
+.about-me__portfolio-header {
+    margin: 0;
+    padding: 100px 0 50px 0;
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #A0A0A0;
+    width: 250px;
+    text-align: start;
+}
+
+.about-me__links-block {
+    display: flex;
+    gap: 230px;
+}
+
+.about-me__portfilio-line {
+    border-bottom: 1px solid #E8E8E8;
+    width: 1140px;
+    margin: 10px 0 20px 0;
+    box-sizing: border-box;
+}
+
+.about-me__links {
+    width: 880px;
+    font-family: Inter;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 50px;
+    letter-spacing: -1.5px;
+    color: #000000;
+    text-decoration: none;
+    text-align: start;
+}
+
+.about-me__links:hover {
+    opacity: 70%;
+}
+
+.about-me__links-img {
+    background-image: url(../../images/linksImg.svg);
+    width: 29px;
+    height: 60px;
+    background-repeat: no-repeat;
+    background-position: center;
+}

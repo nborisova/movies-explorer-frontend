@@ -3,8 +3,7 @@
     background-color: #FAFAFA;
     width: 100%;
     display: flex;
-    padding-top: 110px;
-    padding-left: 70px;
+    padding: 110px 70px 0;
     flex-direction: column;
     box-sizing: border-box;
 }
@@ -24,13 +23,13 @@
 
 .about-project__line {
     border-bottom: 1px solid #000000;
-    width: 1140px;
+    width: 100%;
     margin-top: 21px;
 }
 
 .about-project__text-block {
     display: grid;
-    grid-template-columns: repeat(2, 550px);
+    grid-template-columns: repeat(2, 1fr);
     row-gap: 25px;
     column-gap: 38px;
     padding-top: 70px;
@@ -62,16 +61,15 @@
 }
 
 .about-project__colour-block {
-    width: calc(912px + 228px);
+    width: 100%;
     display: grid;
-    grid-column: 228px 912px;
+    grid-template-columns: 1fr 4fr;
     grid-row: min-content(36px);
     padding-top: 110px;
     row-gap: 15px;
 }
 
 .about-project__blue-block {
-    width: 228px;
     height: 36px;
     background-color: #3456F3;
     grid-column: 1/2;
@@ -82,7 +80,6 @@
 }
 
 .about-project__grey-block {
-    width: 912px;
     height: 36px;
     background-color: #F2F2F2;
     grid-column: 2/3;
