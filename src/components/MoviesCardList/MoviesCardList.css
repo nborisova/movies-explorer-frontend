@@ -1,0 +1,17 @@
+.movie-cards {
+    padding-bottom: 80px;
+    background-color: #FAFAFA;
+}
+.movie-cards__container {
+    background-color: #FAFAFA;
+    width: 100%;
+    padding: 70px 70px 80px;
+    margin: 0;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(4, 270px);
+    gap: 33px 20px;
+    grid-auto-rows: 218px;
+    grid-auto-columns: 270px;
+    list-style-type: none;
+}

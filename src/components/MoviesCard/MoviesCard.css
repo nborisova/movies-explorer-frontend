@@ -1,0 +1,71 @@
+.movie-card__element {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 16px 24px rgba(0, 0, 0, .05);
+    width: 100%;
+    height: 100%;
+}
+
+.movie-card__image {
+    width: 100%;
+    object-position: center;
+}
+
+.movie-card__group {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px 0;
+}
+
+.movie-card__description-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.movie-card__name {
+    margin: 0;
+    padding: 0;
+    text-align: start;
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 15.73px;
+    color: #000000;
+}
+
+.movie-card__duaration {
+    text-align: start;
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13.31px;
+    color: #A0A0A0;
+}
+
+.movie-card__saved-btn {
+    all: unset;
+    width: 16px;
+    height: 16px;
+    background-color: #FFFFFF; ;
+    border-radius: 50%;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .09);
+    position: relative;
+}
+
+.movie-card__saved-btn::after {
+    content: "";
+    position: absolute;
+    height: 11px;
+    width: 11px; 
+    border-radius: 50%;
+    background-color: #F4F4F4;
+    top: 2.5px; 
+    left: 2.5px; 
+    transition-duration: 300ms;
+    z-index: 1;
+  }
+
+  .movie-card__saved-btn_on::after {
+    background-color: #2BE080;
+  }

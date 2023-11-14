@@ -12,7 +12,7 @@ function Header() {
   }
 
     return (
-      <header className="header">
+      <header className={`header ${window.location.pathname === '/' ? ' header_color_dark' : ''}`}>
         <div className="header__link-group">
           <img className="header__logo" src={logo} alt="Логотип проекта"/>
           {loggedIn ? <Link to="/movies" className="header__films">Фильмы</Link> : ""}

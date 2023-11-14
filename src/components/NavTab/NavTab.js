@@ -1,12 +1,11 @@
 import React from "react";
-import { Link } from 'react-router-dom';
 
 function NavTab() {
        return (
       <nav className="nav">
-        <Link to="/profile" className="nav__link" href="#">О проекте</Link>
-        <Link to="/signup" className="nav__link" href="#">Технологии</Link>
-        <Link to="/signup" className="nav__link" href="#">Студент</Link>
+        <a className="nav__link" href="#about-project">О проекте</a>
+        <a className="nav__link" href="#techs">Технологии</a>
+        <a className="nav__link" href="#about-me">Студент</a>
       </nav>
     )
 }
