@@ -1,0 +1,120 @@
+.auth-page__container {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    width: 100%;
+    padding: 70px 0 70px;
+    align-items: center;
+}
+
+.auth-page__header {
+    display: flex;
+    flex-direction: column;
+    width: 396px;
+    align-items: flex-start;
+    gap: 40px;
+    padding-bottom: 40px;
+}
+
+.auth-page__logo {
+    background-image: url(../../images/auth-logo.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 38px;
+    height: 38px;
+}
+
+.auth-page__title {
+    margin: 0;
+    padding: 0;
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29.05px;
+    color: #000000;
+}
+
+.auth-page__container-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.auth-page__fieldset {
+    display: flex;
+    flex-direction: column;
+    width: 396px;
+    align-items: center;
+    gap: 5px;
+    border: none;
+    min-height: 319px;
+}
+
+.auth-page__line {
+    border-bottom: 1px solid #E8E8E8;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.auth-page__label {
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12.1px;
+    color: #A0A0A0;
+    align-self: flex-start;
+}
+
+.auth-page__input {
+    all: unset;
+    align-self: flex-start;
+}
+
+.auth-page__submit-btn {
+    border: none;
+    width: 396px;
+    height: 45px;
+    border-radius: 3px;
+    background-color: #3456F3;
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16.94px;
+    color: #FFFFFF;
+}
+
+.auth-page__text-group {
+    padding-top: 18px;
+    display: flex;
+    gap: 10px;
+}
+
+.auth-page__text {
+    margin: 0;
+    padding: 0;
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16.94px;
+    color: #A0A0A0;
+}
+
+.auth-page__link {
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16.94px;
+    color: #3456F3;
+    text-decoration: none;
+}
+
+.auth-page__field-error {
+    margin-top: -5px;
+    padding-bottom: 10px;
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12.1px;
+    color: #EE3465;
+    align-self: flex-start;
+}

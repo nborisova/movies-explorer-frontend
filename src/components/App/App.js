@@ -13,30 +13,35 @@ import Footer from '../Footer/Footer'
 import SearchForm from '../SearchForm/SearchForm'
 import MoviesCardList from '../MoviesCardList/MoviesCardList'
 import Preloader from '../Preloader/Preloader';
+import Profile from '../Profile/Profile';
+import AuthPage from '../AuthPage/AuthPage';
+import Login from '../Login/Login';
+import Register from '../Register/Register';
 
 function App() {
   return (
     <div className="App">
-      {/* <Header />
-      <SearchForm />
-      <MoviesCardList />
-      <Footer />
-      <Preloader /> */}
+       {/* <Header />
+       <SearchForm />
+       <MoviesCardList />
+       <Footer />
+       <Preloader />
 
-      {/* <Header />
+      <Header />
       <Promo />
       <NavTab />
       <AboutProject />
       <Techs />
       <AboutMe />
-      <Footer /> */}
+      <Footer />  */}
 
       <Routes>
-      <Route path="/saved-movies" element={<SavedMovies />} />
-        {/* <Route path="/" element={<Main />} /> */}
+        <Route path="/" element={<Main />} />
         <Route path="/movies" element={<Movies />} />
-        {/* <Route path="/saved-movies" element={<SavedMovies />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/saved-movies" element={<SavedMovies />} />
+        <Route path="/signup" element={<Register />} />
+        <Route path="/signin" element={<Login />} />
+        {/* <Route path="/profile" element={<Profile />} />
         <Route path="/signin" element={<Login />} />
         <Route path="/signup" element={<Register />} />
         <Route path="*" element={<NotFound />} /> */}
