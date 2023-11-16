@@ -1,5 +1,6 @@
 import React from 'react';
 import photo from '../../images/photo-student.svg'
+import Portfolio from '../Portfolio/Portfolio';
 
 function AboutMe() {
   return (
@@ -20,34 +21,7 @@ function AboutMe() {
            </div>
            <img className="about-me__photo" src={photo} alt="Фото студента"/> 
         </section>
-        <section className="about-me__portfolio">
-            <h3 className="about-me__portfolio-header">
-                Портфолио
-            </h3>
-            <div className="about-me__links-block">
-                <a className="about-me__links" href="https://github.com/nborisova/how-to-learn" target="_blank" 
-                rel="noopener noreferrer">
-                Статичный сайт
-                </a>
-                <div className="about-me__links-img"></div>
-            </div>
-            <div className="about-me__portfilio-line"></div>
-            <div className="about-me__links-block">
-                <a className="about-me__links" href="https://github.com/nborisova/russian-travel" target="_blank" 
-                rel="noopener noreferrer">
-                    Адаптивный сайт
-                </a>
-                <div className="about-me__links-img"></div>
-            </div>
-            <div className="about-me__portfilio-line"></div>
-            <div className="about-me__links-block">
-                <a className="about-me__links" href="https://github.com/nborisova/react-mesto-api-full-gha" target="_blank" 
-                rel="noopener noreferrer">
-                    Одностраничное приложение
-                </a>
-                <div className="about-me__links-img"></div>
-            </div>
-        </section>
+        <Portfolio />
     </section>
   );
 }

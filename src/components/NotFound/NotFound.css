@@ -1,0 +1,39 @@
+.not-found {
+    width: 100%;
+    background-color: #FAFAFA;
+    display: flex;
+    flex-direction: column;
+    padding: 245px 0 0;
+    align-items: center;
+    box-sizing: border-box;
+    gap: 5px;
+}
+
+.not-found__header {
+    margin: 0;
+    padding: 0;
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 140px;
+    line-height: 169.43px;
+    color: #000000;
+}
+
+.not-found__text {
+    margin: 0;
+    padding: 0 0 180px;
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19.36px;
+    color: #000000;
+}
+
+.not-found__link {
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16.94px;
+    color: #3456F3;
+    text-decoration: none;
+}

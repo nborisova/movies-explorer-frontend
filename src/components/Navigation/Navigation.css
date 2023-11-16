@@ -1,0 +1,18 @@
+.navigation__films {
+    text-decoration: none;
+    padding-top: 8px;
+    font-family: Inter;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0em;
+    color: #000000;
+  }
+
+  .navigation__films:hover {
+    opacity: 70%;
+  }
+
+  .navigation__films:focus {
+    font-weight: 500;
+  }

@@ -23,7 +23,7 @@
     padding-right: 33px;
   }
 
-  .header__films {
+  /* .header__films {
     text-decoration: none;
     padding-top: 8px;
     font-family: Inter;
@@ -40,7 +40,7 @@
 
   .header__films:focus {
     font-weight: 500;
-  }
+  } */
 
   .header__profile-group {
     display: flex;

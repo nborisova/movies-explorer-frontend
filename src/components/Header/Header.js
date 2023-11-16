@@ -2,9 +2,10 @@ import React from "react";
 import logo from '../../images/header-logo.svg';
 import { Link, useNavigate } from 'react-router-dom';
 import iconProfile from '../../images/icon-profile.svg'
+import Navigation from '../Navigation/Navigation';
 
 function Header() {
-  const loggedIn = false;
+  const loggedIn = true;
   const navigate = useNavigate();
 
   function signIn() {
@@ -15,8 +16,7 @@ function Header() {
       <header className={`header ${window.location.pathname === '/' ? ' header_color_dark' : ''}`}>
         <div className="header__link-group">
           <img className="header__logo" src={logo} alt="Логотип проекта"/>
-          {loggedIn ? <Link to="/movies" className="header__films">Фильмы</Link> : ""}
-          {loggedIn ? <Link to="/saved-movies" className="header__films">Сохранённые фильмы</Link> : ""}
+          {loggedIn ? <Navigation /> : ""}
         </div>
         {
           loggedIn 
