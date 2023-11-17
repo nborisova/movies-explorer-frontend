@@ -96,3 +96,87 @@
     width: 270px;
     height: 327px;
 }
+
+@media (max-width: 769px) {
+  .about-me {
+    min-height: 994px;
+    padding: 90px 50px 0;
+  }
+}
+
+@media (max-width: 1224px) {
+  .about-me__info {
+    gap: 60px;
+  }
+}
+
+@media (max-width: 769px) {
+  .about-me__info {
+    gap: 50px;
+  }
+}
+
+@media (min-width: 833px) and (max-width: 1027px) {
+  .about-me__name {
+    font-size: 40px;
+    line-height: 40px;
+    width: 400px;
+  }
+}
+
+@media (min-width: 833px) and (max-width: 1027px) {
+  .about-me__profession {
+    padding: 18px 0 0 0;
+    font-size: 12px;
+    line-height: 18px;
+    width: 400px;
+  }
+}
+
+@media (min-width: 833px) and (max-width: 1027px) {
+  .about-me__bio {
+    padding: 20px 0 0 0;
+    font-size: 12px;
+    line-height: 18px;
+    width: 400px;
+  }
+}
+
+@media (max-width: 833px) {
+  .about-me__name {
+    font-size: 40px;
+    line-height: 40px;
+    width: 348px;
+  }
+}
+
+@media (max-width: 833px) {
+  .about-me__profession {
+    padding: 18px 0 0 0;
+    font-size: 12px;
+    line-height: 18px;
+    width: 348px;
+  }
+}
+
+@media (max-width: 833px) {
+  .about-me__bio {
+    padding: 20px 0 0 0;
+    font-size: 12px;
+    line-height: 18px;
+    width: 364px;
+  }
+}
+
+@media (max-width: 833px) {
+  .about-me__photo {
+    width: 255px;
+    height: 307px;
+  }
+}
+
+@media (max-width: 833px) {
+  .about-me__git {
+    padding: 90px 0 0 0;
+  }
+}

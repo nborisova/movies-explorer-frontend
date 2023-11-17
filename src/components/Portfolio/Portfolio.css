@@ -22,13 +22,13 @@
 
 .about-me__portfilio-line {
     border-bottom: 1px solid #E8E8E8;
-    width: 1140px;
+    width: 100%;
     margin: 10px 0 20px 0;
     box-sizing: border-box;
 }
 
 .about-me__links {
-    width: 880px;
+    width: 100%;
     font-family: Inter;
     font-size: 30px;
     font-weight: 400;
@@ -49,4 +49,17 @@
     height: 60px;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+@media (max-width: 769px) {
+  .about-me__portfolio-header {
+    padding: 90px 0 50px 0;
+  }
+}
+
+@media (max-width: 769px) {
+  .about-me__links {
+    font-size: 28px;
+    line-height: 50px;
+  }
 }
