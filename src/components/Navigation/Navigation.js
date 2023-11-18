@@ -3,27 +3,31 @@ import { useNavigate, NavLink } from 'react-router-dom';
 import iconProfile from '../../images/icon-profile.svg'
 
 function Navigation() {
-  const loggedIn = false;
+  const loggedIn = true;
   const navigate = useNavigate();
 
   function signIn() {
     navigate('/signin');
   }
 
+  const [isMenuVisible, setMenuVisible] = React.useState(false);
+  const showMenu = () => setMenuVisible(true);
+  const closeMenu = () => setMenuVisible(false);
+
   const linkClassName = ({isActive}) => isActive ? "navigation__films navigation__films_active" : "navigation__films";
 
     return (
       <nav className="navigation">
-        <NavLink to="/" className="navigation__logo" />
+        <NavLink to="/" className="navigation__logo"/>
         {
           loggedIn
           ?
           <>
-            <div className="navigation__link-group">
+            <div className={`navigation__link-group ${isMenuVisible ? "navigation-visible" : ""}`}>
               <div className="navigation__link-films">
-                <div className="navigation__close-btn navigation__visible-el"></div>
-                <NavLink to="/" className={({isActive}) => isActive ? "navigation__films navigation__films_active navigation__visible-el"
-                : "navigation__films navigation__visible-el"}>Главная</NavLink>
+                <button className="navigation__close-btn navigation-visible" onClick={closeMenu}></button>
+                <NavLink to="/" className={({isActive}) => isActive ? "navigation__films navigation__films_active navigation-visible"
+                : "navigation__films navigation-visible"}>Главная</NavLink>
                 <NavLink to="/movies" className={linkClassName}>Фильмы</NavLink>
                 <NavLink to="/saved-movies" className={linkClassName}>Сохранённые фильмы</NavLink>
               </div>
@@ -32,7 +36,7 @@ function Navigation() {
                 <NavLink to="/profile" className="navigation__user-profile">Аккаунт</NavLink>
               </button>
             </div>
-            <button className="navigation___btn" type="button"></button>
+            <button className="navigation___btn" type="button" onClick={showMenu}></button>
           </>
           : <div className="navigation__auth-group">
               <NavLink to="/signup" className="navigation__signup">Регистрация</NavLink>

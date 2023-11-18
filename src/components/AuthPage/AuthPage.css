@@ -16,6 +16,7 @@
     align-items: flex-start;
     gap: 40px;
     padding-bottom: 40px;
+    box-sizing: border-box;
 }
 
 .auth-page__logo {
@@ -69,6 +70,12 @@
 
 .auth-page__input {
     all: unset;
+    align-self: flex-start;
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16.94px;
+    color: #000000;
     align-self: flex-start;
 }
 
@@ -124,5 +131,59 @@
 @media (max-width: 769px) {
   .auth-page__container {
     min-height: 1024px;
+  }
+}
+
+@media (max-width: 515px) {
+  .auth-page__container {
+    min-height: 780px;
+    padding: 55px 0 15px;
+    gap: 15px;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 515px) {
+  .auth-page__header {
+    width: 260px;
+    align-items: center;
+    gap: 50px;
+    padding-bottom: 60px;
+  }
+}
+
+@media (max-width: 515px) {
+  .auth-page__fieldset {
+    width: 260px;
+    padding-bottom: 103px;
+  }
+}
+
+@media (max-width: 515px) {
+  .auth-page__submit-btn {
+    width: 260px;
+    font-size: 12px;
+    line-height: 14.52px;
+  }
+}
+
+@media (max-width: 515px) {
+  .auth-page__text-group {
+    padding-top: 15px;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 515px) {
+  .auth-page__text {
+    font-size: 12px;
+    line-height: 14.52px;
+  }
+}
+
+@media (max-width: 515px) {
+  .auth-page__link {
+    font-size: 12px;
+    line-height: 14.52px;
   }
 }

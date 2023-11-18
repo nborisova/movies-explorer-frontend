@@ -27,22 +27,17 @@
 
 @media (max-width: 769px) {
   .promo {
-    min-height: 750px;
-  }
-}
-
-@media (max-width: 769px) {
-  .promo {
     min-height: 570px;
     background-size: 248px;
+    padding: 0 10px 34px;
   }
 }
 
-@media (max-width: 769px) {
+@media (max-width: 656px) {
   .promo__header {
     width: 300px;
     font-size: 31px;
     line-height: 39px;
-    width: 730px;
+    width: 100%;
   }
 }

@@ -28,11 +28,12 @@
   gap: 15px;
 }
 
-.navigation__visible-el {
+.navigation-visible {
   display: none;
 }
 
 .navigation__close-btn {
+  all: unset;
   background-image: url('../../images/navigation__close-btn.svg');
   background-position: center;
   background-repeat: no-repeat;
@@ -209,7 +210,7 @@
 }
 
 @media (max-width: 769px) {
-  .navigation__visible-el {
+  .navigation-visible {
     display: flex;
   }
 }
@@ -244,5 +245,11 @@
     width: 54px;
     height: 26px;
     font-size: 10px;
+  }
+}
+
+@media (max-width: 529px) {
+  .navigation__link-group {
+    max-width: 100%;
   }
 }

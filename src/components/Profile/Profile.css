@@ -119,3 +119,40 @@
     padding-bottom: 210px;
   }
 }
+
+@media (max-width: 451px) {
+  .profile {
+    width: 260px;
+    min-height: 706px;
+    padding: 70px 0 50px;
+ }
+}
+
+@media (max-width: 451px) {
+  .profile__header {
+    padding: 0 0 80px;
+  }
+}
+
+@media (max-width: 451px) {
+  .profile__link {
+    padding-top: 170px;
+    font-size: 12px;
+    line-height: 14.52px;
+  }
+}
+
+@media (max-width: 451px) {
+  .profile__edit {
+    font-size: 12px;
+    line-height: 14.52px;
+  }
+}
+
+@media (max-width: 451px) {
+  .profile__logout {
+    font-size: 12px;
+    line-height: 14.52px;
+  }
+}
+
