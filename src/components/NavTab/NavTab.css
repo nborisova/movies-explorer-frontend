@@ -21,3 +21,17 @@
 .nav__link:hover {
     opacity: 70%;
   }
+
+@media (max-width: 420px) {
+  .nav {
+    gap: 25px;
+  }
+}
+
+@media (max-width: 420px) {
+  .nav__link {
+    font-size: 11px;
+    line-height: 16px;
+    width: fit-content;
+  }
+}

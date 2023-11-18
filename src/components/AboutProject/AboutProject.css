@@ -146,3 +146,84 @@
     padding-top: 90px;
   }
 }
+
+@media (max-width: 420px) {
+  .about-project {
+    padding: 73px 20px 0;
+    min-height: 641px;
+  }
+}
+
+@media (max-width: 420px) {
+  .about-project__header {
+    font-size: 18px;
+    line-height: 21.78px;
+    width: 284px;
+  }
+}
+
+@media (max-width: 420px) {
+  .about-project__text-block {
+    display: flex;
+    flex-direction: column;
+    padding-top: 65px;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 420px) {
+  .about-project__header-block {
+    font-size: 18px;
+    line-height: 21.78px;
+  }
+}
+
+@media (max-width: 420px) {
+  .about-project__text {
+    font-size: 11px;
+    line-height: 16px;
+    padding-bottom: 40px;
+  }
+}
+
+@media (max-width: 420px) {
+  .about-project__colour-block {
+    padding-top: 20px;
+    row-gap: 10px;
+  }
+}
+
+@media (max-width: 420px) {
+  .about-project__week-1 {
+    font-size: 11px;
+    line-height: 13.31px;
+  }
+}
+
+
+@media (max-width: 420px) {
+  .about-project__week-4 {
+    font-size: 11px;
+    line-height: 13.31px;
+  }
+}
+
+
+@media (max-width: 420px) {
+  .about-project__web {
+    font-size: 11px;
+    line-height: 13.31px;
+  }
+}
+
+@media (max-width: 420px) {
+  .about-project__blue-block {
+    width: 100px;
+  }
+}
+
+@media (max-width: 420px) {
+  .about-project__grey-block {
+    width: 184px;
+  }
+}

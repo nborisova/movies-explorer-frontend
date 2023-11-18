@@ -29,6 +29,7 @@
 
 .footer__footnotes {
     display: flex;
+    flex-direction: row-reverse;
     padding: 20px 0 0;
     justify-content: space-between;
 }
@@ -54,3 +55,39 @@
   }
 }
 
+@media (max-width: 420px) {
+  .footer {
+    min-height: 253px;
+    padding: 80px 10px 10px;
+  }
+}
+
+@media (max-width: 420px) {
+  .footer__text {
+    font-size: 12px;
+    line-height: 14.52px;
+    width: 300px;
+  }
+}
+
+@media (max-width: 420px) {
+  .footer__footnotes {
+    flex-direction: column;
+    padding: 30px 0 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .footer__note {
+    font-size: 12px;
+    line-height: 14.52px;
+  }
+}
+
+@media (max-width: 420px) {
+  .footer__org {
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 30px;
+  }
+}

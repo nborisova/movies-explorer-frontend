@@ -7,6 +7,7 @@
     align-items: center;
     box-sizing: border-box;
     gap: 5px;
+    justify-content: center;
 }
 
 .not-found__header {
@@ -36,4 +37,11 @@
     line-height: 16.94px;
     color: #3456F3;
     text-decoration: none;
+}
+
+@media (max-width: 769px) {
+  .not-found {
+    min-height: 1024px;
+    padding: 190px 0 0;
+  }
 }

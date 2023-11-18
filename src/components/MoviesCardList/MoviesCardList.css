@@ -9,9 +9,18 @@
     margin: 0;
     box-sizing: border-box;
     display: grid;
-    grid-template-columns: repeat(4, 270px);
+   justify-content: center;
     gap: 33px 20px;
+    grid-template-columns: repeat(auto-fill, 270px);
     grid-auto-rows: 218px;
-    grid-auto-columns: 270px;
     list-style-type: none;
+}
+
+@media (max-width: 769px) {
+  .movie-cards__container {
+    padding: 70px 10px 80px;
+    grid-template-columns: repeat(auto-fill, 339px);
+    grid-auto-rows: 257px;
+    gap: 33px 31px;
+  }
 }

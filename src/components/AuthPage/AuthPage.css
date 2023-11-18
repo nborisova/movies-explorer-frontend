@@ -5,6 +5,8 @@
     width: 100%;
     padding: 70px 0 70px;
     align-items: center;
+    box-sizing: border-box;
+    justify-content: center;
 }
 
 .auth-page__header {
@@ -117,4 +119,10 @@
     line-height: 12.1px;
     color: #EE3465;
     align-self: flex-start;
+}
+
+@media (max-width: 769px) {
+  .auth-page__container {
+    min-height: 1024px;
+  }
 }

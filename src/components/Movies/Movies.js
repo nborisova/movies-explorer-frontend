@@ -20,7 +20,7 @@ function Movies() {
       <SearchForm />
       <MoviesCardList movies={movies} hasMore={true} />
       <Footer />
-      <Preloader />
+      {/* <Preloader /> */}
     </div>
   );
 }

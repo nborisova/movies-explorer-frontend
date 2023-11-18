@@ -1,6 +1,5 @@
 import React from "react";
-import logo from '../../images/header-logo.svg';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import iconProfile from '../../images/icon-profile.svg'
 
 function Navigation() {
@@ -11,27 +10,32 @@ function Navigation() {
     navigate('/signin');
   }
 
+  const linkClassName = ({isActive}) => isActive ? "navigation__films navigation__films_active" : "navigation__films";
+
     return (
       <nav className="navigation">
-        <img className="navigation__logo" src={logo} alt="Логотип проекта"/>
+        <NavLink to="/" className="navigation__logo" />
         {
           loggedIn
           ?
           <>
             <div className="navigation__link-group">
               <div className="navigation__link-films">
-                <Link to="/movies" className="navigation__films">Фильмы</Link>
-                <Link to="/saved-movies" className="navigation__films">Сохранённые фильмы</Link>
+                <div className="navigation__close-btn navigation__visible-el"></div>
+                <NavLink to="/" className={({isActive}) => isActive ? "navigation__films navigation__films_active navigation__visible-el"
+                : "navigation__films navigation__visible-el"}>Главная</NavLink>
+                <NavLink to="/movies" className={linkClassName}>Фильмы</NavLink>
+                <NavLink to="/saved-movies" className={linkClassName}>Сохранённые фильмы</NavLink>
               </div>
               <button className="navigation__profile-group">
                 <img className="navigation__icon-profile" src={iconProfile} alt="Иконка профиля"/>
-                <Link to="/profile" className="navigation__user-profile">Аккаунт</Link>
+                <NavLink to="/profile" className="navigation__user-profile">Аккаунт</NavLink>
               </button>
             </div>
             <button className="navigation___btn" type="button"></button>
           </>
           : <div className="navigation__auth-group">
-              <Link to="/signup" className="navigation__signup">Регистрация</Link>
+              <NavLink to="/signup" className="navigation__signup">Регистрация</NavLink>
               <button onClick={signIn} className="navigation__signin">Войти</button>
             </div>
         }

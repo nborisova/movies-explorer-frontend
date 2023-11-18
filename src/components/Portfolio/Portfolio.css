@@ -1,6 +1,7 @@
 .about-me__portfolio {
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
 }
 
 .about-me__portfolio-header {
@@ -17,7 +18,7 @@
 
 .about-me__links-block {
     display: flex;
-    gap: 230px;
+    justify-content: space-between;
 }
 
 .about-me__portfilio-line {
@@ -28,7 +29,6 @@
 }
 
 .about-me__links {
-    width: 100%;
     font-family: Inter;
     font-size: 30px;
     font-weight: 400;
@@ -61,5 +61,40 @@
   .about-me__links {
     font-size: 28px;
     line-height: 50px;
+  }
+}
+
+@media (max-width: 481px) {
+  .about-me__portfolio-header {
+    padding: 70px 0 40px 0;
+    font-size: 14px;
+    line-height: 20px;
+    width: 292px;
+  }
+}
+
+@media (max-width: 481px) {
+  .about-me__links {
+    font-size: 18px;
+    line-height: 28px;
+    width: 250px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 481px) {
+  .about-me__links-img {
+    width: 18px;
+    height: 28px;
+    background-image: url('../../images/linksImg-small.svg');
+  }
+}
+
+@media (max-width: 481px) {
+  .about-me__portfilio-line {
+    border-bottom: 1px solid #E8E8E8;
+    width: 100%;
+    margin: 10px 0 20px 0;
+    box-sizing: border-box;
   }
 }

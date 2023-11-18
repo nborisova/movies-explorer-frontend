@@ -10,25 +10,4 @@
     background-color: #DDDEE3;
   }
 
-  /* @media (max-width: 360px) {
-    .header {
-      padding-top: 28px;
-      margin: 0 0 0 -19px;
-      width: 100vw;
-    }
-  }
 
-  @media (max-width: 920px) {
-    .header__logo {
-      margin-left: 27px;
-    }
-  }
-
-  @media (max-width: 360px) {
-    .header__logo {
-      width: 103.74px;
-      height: 24.4px;
-      margin-left: 27px;
-      margin-bottom: 31.6px;
-    }
-  } */
