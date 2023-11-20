@@ -2,7 +2,7 @@ import React from 'react';
 
 function More() {
   return (
-        <button className='more__btn'>Ещё</button>
+        <button className='more-btn'>Ещё</button>
   );
 }
 

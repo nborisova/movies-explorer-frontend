@@ -90,6 +90,7 @@
     font-size: 14px;
     line-height: 16.94px;
     color: #FFFFFF;
+    cursor: pointer;
 }
 
 .auth-page__text-group {

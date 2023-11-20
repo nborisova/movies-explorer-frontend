@@ -51,17 +51,18 @@
     border-radius: 50%;
     box-shadow: 0 3px 6px rgba(0, 0, 0, .09);
     position: relative;
+    cursor: pointer;
 }
 
 .movie-card__saved-btn::after {
     content: "";
     position: absolute;
     height: 11px;
-    width: 11px; 
+    width: 11px;
     border-radius: 50%;
     background-color: #F4F4F4;
-    top: 2.5px; 
-    left: 2.5px; 
+    top: 2.5px;
+    left: 2.5px;
     transition-duration: 300ms;
     z-index: 1;
   }

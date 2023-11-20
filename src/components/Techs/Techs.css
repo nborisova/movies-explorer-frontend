@@ -10,21 +10,16 @@
 
 .techs__header {
     margin: 0;
-    padding: 0;
+    padding: 0 0 21px;
     font-family: Inter;
     font-size: 22px;
     font-weight: 400;
     line-height: 26.63px;
     letter-spacing: -1px;
     color: #000000;
-    width: 600px;
     text-align: start;
-}
-
-.techs__line {
     border-bottom: 1px solid #000000;
     width: 100%;
-    margin-top: 21px;
 }
 
 .techs__description {
@@ -64,9 +59,11 @@
 
 .techs__types {
     display: flex;
-    padding-top: 100px;
     justify-content: center;
     gap: 11px;
+    list-style: none;
+    padding: 100px 0 0;
+    margin: 0;
 }
 
 .techs__type {
@@ -135,8 +132,13 @@
   .techs__header {
     font-size: 18px;
     line-height: 21.78px;
-    width: 284px;
-    padding-bottom: 5px;
+    padding: 0 0 21px;
+  }
+}
+
+@media (max-width: 420px) {
+  .techs__header {
+    padding: 0 0 25px;
   }
 }
 
@@ -146,7 +148,7 @@
   }
 }
 
-@media (max-width: 579px) {
+@media (max-width: 721px) {
   .techs__description-header {
     font-size: 30px;
     line-height: 36.31px;

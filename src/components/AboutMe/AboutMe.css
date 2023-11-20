@@ -10,7 +10,7 @@
 
 .about-me__header {
     margin: 0;
-    padding: 0;
+    padding: 0 0 21px;
     font-family: Inter;
     font-size: 22px;
     font-weight: 400;
@@ -19,19 +19,15 @@
     color: #000000;
     width: 600px;
     text-align: start;
-}
-
-.about-me__line {
     border-bottom: 1px solid #000000;
     width: 100%;
-    margin-top: 21px;
-    box-sizing: border-box;
 }
 
 .about-me__info {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
+    box-sizing: border-box;
     padding-top: 65px;
 }
 
@@ -98,7 +94,7 @@
     height: 327px;
 }
 
-@media (max-width: 769px) {
+@media (max-width: 826px) {
   .about-me {
     min-height: 994px;
     padding: 90px 50px 0;
@@ -111,13 +107,13 @@
   }
 }
 
-@media (max-width: 769px) {
+@media (max-width: 826px) {
   .about-me__info {
     gap: 50px;
   }
 }
 
-@media (min-width: 833px) and (max-width: 1027px) {
+@media (min-width: 870px) and (max-width: 1090px) {
   .about-me__name {
     font-size: 40px;
     line-height: 40px;
@@ -125,7 +121,7 @@
   }
 }
 
-@media (min-width: 833px) and (max-width: 1027px) {
+@media (min-width: 870px) and (max-width: 1090px) {
   .about-me__profession {
     padding: 18px 0 0 0;
     font-size: 12px;
@@ -134,7 +130,7 @@
   }
 }
 
-@media (min-width: 833px) and (max-width: 1027px) {
+@media (min-width: 870px) and (max-width: 1090px) {
   .about-me__bio {
     padding: 20px 0 0 0;
     font-size: 12px;
@@ -143,7 +139,7 @@
   }
 }
 
-@media (max-width: 833px) {
+@media (max-width: 869px) {
   .about-me__name {
     font-size: 40px;
     line-height: 40px;
@@ -151,7 +147,7 @@
   }
 }
 
-@media (max-width: 833px) {
+@media (max-width: 869px) {
   .about-me__profession {
     padding: 18px 0 0 0;
     font-size: 12px;
@@ -160,7 +156,7 @@
   }
 }
 
-@media (max-width: 833px) {
+@media (max-width: 869px) {
   .about-me__bio {
     padding: 20px 0 0 0;
     font-size: 12px;
@@ -169,14 +165,14 @@
   }
 }
 
-@media (max-width: 833px) {
+@media (max-width: 869px) {
   .about-me__photo {
     width: 255px;
     height: 307px;
   }
 }
 
-@media (max-width: 833px) {
+@media (max-width: 869px) {
   .about-me__git {
     padding: 90px 0 0 0;
   }
@@ -189,7 +185,7 @@
   }
 }
 
-@media (max-width: 731px) {
+@media (max-width: 766px) {
   .about-me__info {
     display: flex;
     flex-direction: column;

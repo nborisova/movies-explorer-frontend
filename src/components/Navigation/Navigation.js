@@ -25,23 +25,23 @@ function Navigation() {
           <>
             <div className={`navigation__link-group ${isMenuVisible ? "navigation-visible" : ""}`}>
               <div className="navigation__link-films">
-                <button className="navigation__close-btn navigation-visible" onClick={closeMenu}></button>
+                <button className="navigation__close-btn" onClick={closeMenu}></button>
                 <NavLink to="/" className={({isActive}) => isActive ? "navigation__films navigation__films_active navigation-visible"
                 : "navigation__films navigation-visible"}>Главная</NavLink>
                 <NavLink to="/movies" className={linkClassName}>Фильмы</NavLink>
                 <NavLink to="/saved-movies" className={linkClassName}>Сохранённые фильмы</NavLink>
               </div>
-              <button className="navigation__profile-group">
+              <NavLink to="/profile" className="navigation__profile-group">
                 <img className="navigation__icon-profile" src={iconProfile} alt="Иконка профиля"/>
-                <NavLink to="/profile" className="navigation__user-profile">Аккаунт</NavLink>
-              </button>
+                <p className="navigation__user-profile">Аккаунт</p>
+              </NavLink>
             </div>
-            <button className="navigation___btn" type="button" onClick={showMenu}></button>
+            <button className="navigation__btn" type="button" onClick={showMenu}></button>
           </>
-          : <div className="navigation__auth-group">
+          : <nav className="navigation__auth-group">
               <NavLink to="/signup" className="navigation__signup">Регистрация</NavLink>
-              <button onClick={signIn} className="navigation__signin">Войти</button>
-            </div>
+              <button onClick={signIn} className="navigation__signin" type="button">Войти</button>
+            </nav>
         }
       </nav>
     )

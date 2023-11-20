@@ -4,7 +4,6 @@ function Techs() {
   return (
     <section className="techs" id="techs">
         <h2 className="techs__header">Технологии</h2>
-        <div className="techs__line"></div>
         <div className="techs__description">
             <h3 className="techs__description-header">
                 7 технологий
@@ -13,15 +12,15 @@ function Techs() {
                 На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.
             </p>
         </div>
-        <div className="techs__types">
-            <div className="techs__type">HTML</div>
-            <div className="techs__type">CSS</div>
-            <div className="techs__type">JS</div>
-            <div className="techs__type">React</div>
-            <div className="techs__type">Git</div>
-            <div className="techs__type">Express.js</div>
-            <div className="techs__type">mongoDB</div>
-        </div>
+        <ul className="techs__types">
+            <li className="techs__type">HTML</li>
+            <li className="techs__type">CSS</li>
+            <li className="techs__type">JS</li>
+            <li className="techs__type">React</li>
+            <li className="techs__type">Git</li>
+            <li className="techs__type">Express.js</li>
+            <li className="techs__type">mongoDB</li>
+        </ul>
     </section>
   );
 }

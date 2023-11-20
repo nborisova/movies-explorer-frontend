@@ -15,13 +15,15 @@ function Movies() {
     });
 
   return (
-    <div>
+    <>
       <Header />
-      <SearchForm />
-      <MoviesCardList movies={movies} hasMore={true} />
+      <main>
+        <SearchForm />
+        <MoviesCardList movies={movies} hasMore={true} />
+      </main>
       <Footer />
       {/* <Preloader /> */}
-    </div>
+    </>
   );
 }
 

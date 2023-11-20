@@ -1,4 +1,4 @@
-.more__btn {
+.more-btn {
     width: 320px;
     min-height: 36px;
     border-style: none;
@@ -9,4 +9,11 @@
     line-height: 14.52px;
     color: #000000;
     border-radius: 6px;
+    cursor: pointer;
+}
+
+@media (max-width: 400px) {
+  .more-btn {
+    width: 240px;
+  }
 }

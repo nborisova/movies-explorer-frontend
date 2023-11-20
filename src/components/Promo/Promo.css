@@ -1,5 +1,5 @@
 .promo {
-    min-height: 490px;
+    min-height: 525px;
     width: 100%;
     background-color: #DDDEE3;
     background-image: url(../../images/promo-img.svg);
@@ -15,7 +15,7 @@
 
 .promo__header {
     margin: 0;
-    padding: 0;
+    padding: 0 0 5px 0;
     font-family: Inter;
     font-size: 50px;
     font-weight: 400;
@@ -27,17 +27,25 @@
 
 @media (max-width: 769px) {
   .promo {
-    min-height: 570px;
-    background-size: 248px;
-    padding: 0 10px 34px;
+    min-height: 784px;
+    padding-top: 20px;
   }
 }
 
 @media (max-width: 656px) {
+  .promo {
+    min-height: 570px;
+    background-size: 248px;
+    padding-bottom: 50px;
+  }
+}
+
+@media (max-width: 756px) {
   .promo__header {
     width: 300px;
     font-size: 31px;
     line-height: 39px;
-    width: 100%;
+    /* width: 100%; */
+    letter-spacing: -1px;
   }
 }

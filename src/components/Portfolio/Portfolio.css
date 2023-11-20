@@ -16,27 +16,26 @@
     text-align: start;
 }
 
-.about-me__links-block {
-    display: flex;
-    justify-content: space-between;
-}
-
-.about-me__portfilio-line {
-    border-bottom: 1px solid #E8E8E8;
-    width: 100%;
-    margin: 10px 0 20px 0;
-    box-sizing: border-box;
-}
-
 .about-me__links {
-    font-family: Inter;
-    font-size: 30px;
-    font-weight: 400;
-    line-height: 50px;
-    letter-spacing: -1.5px;
-    color: #000000;
-    text-decoration: none;
-    text-align: start;
+  font-family: Inter;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 50px;
+  letter-spacing: -1.5px;
+  color: #000000;
+  text-decoration: none;
+  text-align: start;
+  min-height: 60px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid #E8E8E8;
+  padding: 0px 0 15px;
+  margin-bottom: 15px;
+}
+
+.about-me__links:last-child {
+  border-bottom: none;
 }
 
 .about-me__links:hover {
@@ -77,8 +76,10 @@
   .about-me__links {
     font-size: 18px;
     line-height: 28px;
-    width: 250px;
-    margin-bottom: 10px;
+    min-height: 28px;
+    letter-spacing: -1px;
+    padding: 0 0 20px;
+    margin-bottom: 20px;
   }
 }
 

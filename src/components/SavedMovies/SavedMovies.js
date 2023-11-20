@@ -14,12 +14,14 @@ function SavedMovies() {
     });
 
   return (
-    <div>
+    <>
       <Header />
-      <SearchForm />
-      <MoviesCardList movies={movies} hasMore={false}  />
+      <main>
+        <SearchForm />
+        <MoviesCardList movies={movies} hasMore={false}  />
+      </main>
       <Footer />
-    </div>
+    </>
   );
 }
 
