@@ -23,18 +23,21 @@ function Navigation() {
           loggedIn
           ?
           <>
-            <div className={`navigation__link-group ${isMenuVisible ? "navigation-visible" : ""}`}>
-              <div className="navigation__link-films">
-                <button className="navigation__close-btn" onClick={closeMenu}></button>
-                <NavLink to="/" className={({isActive}) => isActive ? "navigation__films navigation__films_active navigation-visible"
-                : "navigation__films navigation-visible"}>Главная</NavLink>
-                <NavLink to="/movies" className={linkClassName}>Фильмы</NavLink>
-                <NavLink to="/saved-movies" className={linkClassName}>Сохранённые фильмы</NavLink>
+            <div className={`navigation__container ${isMenuVisible ? "navigation__container_visible" : ""}`}>
+              <div className="navigation__link-group">
+                <div className="navigation__link-films">
+                  <button className="navigation__close-btn" onClick={closeMenu}></button>
+                  <NavLink to="/" className={({isActive}) => isActive
+                  ? "navigation__films navigation__films_active navigation__films_visible"
+                  : "navigation__films navigation__films_visible"}>Главная</NavLink>
+                  <NavLink to="/movies" className={linkClassName}>Фильмы</NavLink>
+                  <NavLink to="/saved-movies" className={linkClassName}>Сохранённые фильмы</NavLink>
+                </div>
+                <NavLink to="/profile" className="navigation__profile-group">
+                  <img className="navigation__icon-profile" src={iconProfile} alt="Иконка профиля"/>
+                  <p className="navigation__user-profile">Аккаунт</p>
+                </NavLink>
               </div>
-              <NavLink to="/profile" className="navigation__profile-group">
-                <img className="navigation__icon-profile" src={iconProfile} alt="Иконка профиля"/>
-                <p className="navigation__user-profile">Аккаунт</p>
-              </NavLink>
             </div>
             <button className="navigation__btn" type="button" onClick={showMenu}></button>
           </>

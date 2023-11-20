@@ -27,6 +27,10 @@
     height: 38px;
 }
 
+.auth-page__logo:hover {
+  opacity: 70%;
+}
+
 .auth-page__title {
     margin: 0;
     padding: 0;
@@ -93,6 +97,10 @@
     cursor: pointer;
 }
 
+.auth-page__submit-btn:hover {
+  opacity: 70%;
+}
+
 .auth-page__text-group {
     padding-top: 18px;
     display: flex;
@@ -116,6 +124,10 @@
     line-height: 16.94px;
     color: #3456F3;
     text-decoration: none;
+}
+
+.auth-page__link:hover {
+  opacity: 70%;
 }
 
 .auth-page__field-error {

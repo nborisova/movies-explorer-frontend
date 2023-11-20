@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     background-color: #FAFAFA;
-    padding: 75px 0 50px;
+    padding: 55px 0 50px;
     width: 410px;
     margin: auto;
     box-sizing: border-box;
@@ -212,6 +212,7 @@
   line-height: 16.94px;
   color: #FFFFFF;
   cursor: pointer;
+  margin-top: 18px;
 }
 
 @media (max-width: 515px) {

@@ -181,7 +181,7 @@
 @media (max-width: 731px) {
   .about-me {
     min-height: 1198px;
-    padding: 72px 15px 0;
+    padding: 72px 0 0;
   }
 }
 
@@ -194,17 +194,12 @@
   }
 }
 
-@media (max-width: 657px) {
+@media (max-width: 731px) {
   .about-me__header {
     font-size: 18px;
-    line-height: 21.78px;
-    width: 292px;
-  }
-}
-
-@media (max-width: 481px) {
-  .about-me__line {
-    margin: 24px 0 -3px;
+    line-height: 25.78px;
+    margin: 0 auto;
+    width: calc(100% - 28px);
   }
 }
 
@@ -217,10 +212,10 @@
 
 @media (max-width: 481px) {
   .about-me__name {
-
     font-size: 30px;
     line-height: 36.31px;
-    width: 292px;
+    margin: 0 auto;
+    width: calc(100% - 28px);
   }
 }
 
@@ -228,7 +223,8 @@
   .about-me__profession {
     font-size: 11px;
     line-height: 16px;
-    width: 292px;
+    margin: 0 auto;
+    width: calc(100% - 28px);
   }
 }
 
@@ -236,12 +232,15 @@
   .about-me__bio {
     font-size: 11px;
     line-height: 16px;
-    width: 292px;
+    margin: 0 auto;
+    width: calc(100% - 28px);
   }
 }
 
 @media (max-width: 481px) {
   .about-me__git {
     padding: 42px 0 0 0;
+    margin: 0 auto;
+    width: calc(100% - 28px);
   }
 }

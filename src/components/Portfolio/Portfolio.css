@@ -1,19 +1,19 @@
 .about-me__portfolio {
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
 }
 
 .about-me__portfolio-header {
-    margin: 0;
-    padding: 100px 0 50px 0;
-    font-family: Inter;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 20px;
-    color: #A0A0A0;
-    width: 250px;
-    text-align: start;
+  margin: 0;
+  padding: 100px 0 50px 0;
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #A0A0A0;
+  width: 250px;
+  text-align: start;
 }
 
 .about-me__links {
@@ -43,11 +43,11 @@
 }
 
 .about-me__links-img {
-    background-image: url(../../images/linksImg.svg);
-    width: 29px;
-    height: 60px;
-    background-repeat: no-repeat;
-    background-position: center;
+  background-image: url(../../images/linksImg.svg);
+  width: 29px;
+  height: 60px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 @media (max-width: 769px) {
@@ -63,23 +63,25 @@
   }
 }
 
-@media (max-width: 481px) {
+@media (max-width: 731px) {
   .about-me__portfolio-header {
     padding: 70px 0 40px 0;
     font-size: 14px;
     line-height: 20px;
-    width: 292px;
+    margin: 0 auto;
+    width: calc(100% - 28px);
   }
 }
 
-@media (max-width: 481px) {
+@media (max-width: 731px) {
   .about-me__links {
     font-size: 18px;
     line-height: 28px;
     min-height: 28px;
     letter-spacing: -1px;
     padding: 0 0 20px;
-    margin-bottom: 20px;
+    margin: 0 auto 20px;
+    width: calc(100% - 28px);
   }
 }
 

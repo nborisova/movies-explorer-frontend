@@ -7,7 +7,7 @@ function Footer() {
             <div className="footer__line"></div>
             <div className="footer__footnotes">
                 <ul className="footer__org">
-                  <li><a className="footer__note" href="https://practicum.yandex.ru" target="_blank" rel="noopener noreferrer">
+                  <li><a className="footer__note footer__note-link" href="https://practicum.yandex.ru" target="_blank" rel="noopener noreferrer">
                     Яндекс.Практикум
                   </a></li>
                   <li><a className="footer__note" href="https://github.com/nborisova" target="_blank" rel="noopener noreferrer">

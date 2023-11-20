@@ -53,6 +53,10 @@
     color: #000000;
 }
 
+.footer__note-link:hover {
+  opacity: 70%;
+}
+
 @media (max-width: 769px) {
   .footer {
     padding: 80px 32px 10px;
