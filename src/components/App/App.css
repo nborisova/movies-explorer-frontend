@@ -1,0 +1,16 @@
+.App {
+  text-align: center;
+  scroll-behavior: smooth;
+  font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+  font-weight: normal;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  width: 100vw;
+  max-width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+  background-color: #FAFAFA;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}

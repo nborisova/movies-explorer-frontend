@@ -1,0 +1,23 @@
+.more-btn {
+    width: 320px;
+    min-height: 36px;
+    border-style: none;
+    text-align: center;
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14.52px;
+    color: #000000;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.more-btn:hover {
+  opacity: 70%;
+}
+
+@media (max-width: 400px) {
+  .more-btn {
+    width: 240px;
+  }
+}
