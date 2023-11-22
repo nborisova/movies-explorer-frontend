@@ -93,6 +93,10 @@
     cursor: pointer;
 }
 
+.profile__edit:hover {
+  opacity: 70%;
+}
+
 .profile__logout {
     all: unset;
     font-family: Inter;
@@ -101,6 +105,10 @@
     line-height: 15.73px;
     color: #EE3465;
     cursor: pointer;
+}
+
+.profile__logout:hover {
+  opacity: 70%;
 }
 
 @media (max-width: 769px) {
@@ -159,13 +167,16 @@
 }
 
 .profile__fieldset {
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  width: 396px;
+  width: 100%;
   align-items: center;
   gap: 5px;
   border: none;
   min-height: 319px;
+  box-sizing: border-box;
 }
 
 .profile__label {
@@ -213,6 +224,10 @@
   color: #FFFFFF;
   cursor: pointer;
   margin-top: 18px;
+}
+
+.profile__submit-btn:hover {
+  opacity: 70%;
 }
 
 @media (max-width: 515px) {

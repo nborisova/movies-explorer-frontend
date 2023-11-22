@@ -35,6 +35,7 @@
 }
 
 .navigation__logo {
+  min-width: 38px;
   width: 38px;
   height: 38px;
   background-image: url('../../images/header-logo.svg');
@@ -83,6 +84,10 @@
   cursor: pointer;
 }
 
+.navigation__close-btn:hover {
+  opacity: 70%;
+}
+
 .navigation__films {
   text-decoration: none;
   padding-top: 8px;
@@ -106,7 +111,7 @@
   min-height: 32px;
   display: flex;
   align-items: center;
-  margin: 20px 70px;
+  margin: 16px 70px 10px;
   gap: 10px;
   border-radius: 50px;
   border: 2px solid rgba(0, 0, 0, .1);
@@ -185,6 +190,10 @@
   background-repeat: no-repeat;
 }
 
+.navigation__btn:hover {
+  opacity: 70%;
+}
+
 @media (max-width: 769px) {
   .navigation {
     padding: 16px 31px;
@@ -202,7 +211,7 @@
     top: 0;
     right: 0;
     z-index: 2;
-    padding: 0 0 70px 0;
+    padding: 0 0 76px 0;
   }
 }
 
@@ -303,7 +312,7 @@
 @media (max-width: 529px) {
   .navigation__link-group {
     max-width: 100%;
-    padding: 0 0 25px 0;
+    padding: 0 0 34px 0;
   }
 }
 

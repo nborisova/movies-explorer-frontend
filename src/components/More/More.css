@@ -12,6 +12,10 @@
     cursor: pointer;
 }
 
+.more-btn:hover {
+  opacity: 70%;
+}
+
 @media (max-width: 400px) {
   .more-btn {
     width: 240px;

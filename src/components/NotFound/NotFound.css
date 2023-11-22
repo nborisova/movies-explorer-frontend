@@ -3,7 +3,7 @@
     background-color: #FAFAFA;
     display: flex;
     flex-direction: column;
-    padding: 250px 0 20px;
+    padding: 246px 0 20px;
     align-items: center;
     box-sizing: border-box;
     justify-content: space-between;
@@ -21,7 +21,7 @@
 
 .not-found__text {
     margin: 0;
-    padding: 0 0 180px;
+    padding: 5px 0 180px;
     font-family: Inter;
     font-weight: 400;
     font-size: 16px;
@@ -36,13 +36,18 @@
     line-height: 16.94px;
     color: #3456F3;
     text-decoration: none;
+    padding-top: 5px;
+}
+
+.not-found__link:hover {
+  opacity: 70%;
 }
 
 @media (max-width: 769px) {
   .not-found {
     min-height: 1024px;
     justify-content: center;
-    padding: 200px 0 20px;
+    padding: 210px 0 20px;
   }
 }
 

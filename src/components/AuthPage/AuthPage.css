@@ -81,7 +81,14 @@
     line-height: 16.94px;
     color: #000000;
     align-self: flex-start;
+    width: 100%;
+    text-align: left;
 }
+
+/* .auth-page__input:focus {
+  border-bottom: 1px solid #3456F3;
+  /* outline: 0; */
+
 
 .auth-page__submit-btn {
     border: none;

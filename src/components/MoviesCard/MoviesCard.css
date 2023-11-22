@@ -54,6 +54,10 @@
     cursor: pointer;
 }
 
+.movie-card__saved-btn:hover {
+  opacity: 70%;
+}
+
 .movie-card__saved-btn::after {
     content: "";
     position: absolute;

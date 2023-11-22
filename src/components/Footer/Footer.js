@@ -10,7 +10,7 @@ function Footer() {
                   <li><a className="footer__note footer__note-link" href="https://practicum.yandex.ru" target="_blank" rel="noopener noreferrer">
                     Яндекс.Практикум
                   </a></li>
-                  <li><a className="footer__note" href="https://github.com/nborisova" target="_blank" rel="noopener noreferrer">
+                  <li><a className="footer__note footer__note-link" href="https://github.com/nborisova" target="_blank" rel="noopener noreferrer">
                     Github
                   </a></li>
                 </ul>

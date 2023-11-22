@@ -3,7 +3,7 @@ import Header from '../Header/Header';
 
 function Profile() {
 
-  const [isEdit, setEdit] = React.useState(true);
+  const [isEdit, setEdit] = React.useState(false);
   const editProfile = () => setEdit(true);
   const cancelEditProfile = () => setEdit(false);
 
@@ -18,11 +18,11 @@ function Profile() {
               <form className="profile__container-form">
               <fieldset className="profile__fieldset">
                   <label for="name-input" className="profile__label">Имя</label>
-                  <input id="name-input" className="profile__input" type="text"
+                  <input id="name-input" className="profile__input" placeholder="Имя" type="text"
                   maxLength="40" minLength="2" required/>
                   <span className="profile__field-error"></span>
                   <label for="email-input" className="profile__label">E-mail</label>
-                  <input id="email-input" className="profile__input" type="email"
+                  <input id="email-input" className="profile__input" placeholder="Email" type="email"
                   maxLength="40" minLength="2" required/>
                   <span className="profile__field-error"></span>
               </fieldset>

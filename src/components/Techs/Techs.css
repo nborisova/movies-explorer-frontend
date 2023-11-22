@@ -64,6 +64,7 @@
     list-style: none;
     padding: 100px 0 0;
     margin: 0;
+    flex-wrap: wrap;
 }
 
 .techs__type {
@@ -86,12 +87,19 @@
     box-sizing: border-box;
 }
 
-@media (max-width: 769px) {
+@media (max-width: 826px) {
   .techs {
     min-height: 567px;
     padding: 90px 50px 0;
   }
 }
+
+/* @media (max-width: 769px) {
+  .techs {
+    min-height: 567px;
+    padding: 90px 50px 0;
+  }
+} */
 
 @media (max-width: 769px) {
   .techs__description {
@@ -109,10 +117,11 @@
 @media (max-width: 769px) {
   .techs__types {
     padding-top: 80px;
+    gap: 10px;
   }
 }
 
-@media (max-width: 769px) {
+@media (max-width: 854px) {
   .techs__type {
     font-size: 12px;
     line-height: 14.52px;

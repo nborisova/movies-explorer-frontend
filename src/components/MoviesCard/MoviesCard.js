@@ -6,7 +6,7 @@ function MoviesCard({ img, name, duaration }) {
   return (
     <li className="movie-card">
         <article className="movie-card__element">
-            <img className="movie-card__image" src={img} alt="Заставка фильма"/>
+            <img className="movie-card__image" src={img} alt={name}/>
             <div className="movie-card__group">
                 <div className="movie-card__description-group">
                     <h2 className="movie-card__name">{name}</h2>

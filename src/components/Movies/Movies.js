@@ -4,7 +4,7 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
 import Preloader from '../Preloader/Preloader';
-import cardImg from '../../images/card-image.svg';
+import cardImg from '../../images/card-image.png';
 
 function Movies() {
 
