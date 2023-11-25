@@ -1,8 +1,8 @@
 import React from 'react';
 
-function More() {
+function More({ loadMore }) {
   return (
-        <button className='more-btn'>Ещё</button>
+        <button className='more-btn' onClick={loadMore}>Ещё</button>
   );
 }
 

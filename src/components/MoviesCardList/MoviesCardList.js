@@ -2,13 +2,13 @@ import React from 'react';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import More from '../More/More';
 
-function MoviesCardList({ movies, hasMore }) {
+function MoviesCardList({ movies, hasMore, loadMore }) {
   return (
     <section className='movie-cards'>
         <ul className="movie-cards__container">
-            {movies.map(movie => <MoviesCard img={movie.img} name={movie.name} duaration={movie.duration} />)}
+            {movies.map(movie => <MoviesCard movie={movie}/>)}
         </ul>
-        { hasMore ? <More /> : '' }
+        { hasMore ? <More loadMore={loadMore} /> : '' }
     </section>
   );
 }

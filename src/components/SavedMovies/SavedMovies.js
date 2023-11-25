@@ -8,9 +8,9 @@ import cardImg from '../../images/card-image.png';
 function SavedMovies() {
 
     const movies = Array(3).fill({
-        'img': cardImg,
-        'name': '33 слова о дизайне',
-        'duration': '1ч42м',
+        'image': {'url': cardImg},
+        'nameRU': '33 слова о дизайне',
+        'duration': 102,
     });
 
   return (

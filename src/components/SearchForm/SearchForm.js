@@ -1,14 +1,33 @@
 import React from 'react';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox'
 
-function SearchForm() {
+function SearchForm({ search }) {
+  const [text, setText] = React.useState('');
+  const [isShortMovie, setShortMovie] = React.useState(false);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    search({ text, isShortMovie });
+  }
+
+  function handleChangeText(e) {
+    setText(e.target.value);
+  }
+
+  //TODO
+  function handleChangeShortMovie(e) {
+    setShortMovie(e.target.value);
+  }
+
   return (
     <section className="search-section">
-        <form className="search-form" name="search-form">
+        <form className="search-form" name="search-form" onSubmit={handleSubmit}>
             <div className="search-form__area">
               <div className="search-form__area-block">
                 <div className="search-form__input-icon"></div>
-                <input className="search-form__input" type="search" placeholder="Фильм" required></input>
+                <input className="search-form__input" type="search" placeholder="Фильм" onChange={handleChangeText}
+                value={text ?? ''} required />
               </div>
               <div className="search-form__area-block">
                 <button className="search-form__submit-buttons" type="submit" value=""></button>

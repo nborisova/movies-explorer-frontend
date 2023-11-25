@@ -3,11 +3,11 @@ import './Preloader.css'
 
 const Preloader = () => {
     return (
-        <main className="preloader">
+        <section className="preloader">
             <div className="preloader__container">
                 <span className="preloader__round"></span>
             </div>
-        </main>
+        </section>
     )
 };
 
