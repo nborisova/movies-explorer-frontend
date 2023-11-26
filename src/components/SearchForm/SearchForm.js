@@ -1,9 +1,7 @@
 import React from 'react';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox'
 
-function SearchForm({ search }) {
-  const [text, setText] = React.useState('');
-  const [isShortMovie, setShortMovie] = React.useState(false);
+function SearchForm({ search, text, setText, isShortMovie, setShortMovie }) {
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -15,9 +13,9 @@ function SearchForm({ search }) {
     setText(e.target.value);
   }
 
-  //TODO
-  function handleChangeShortMovie(e) {
-    setShortMovie(e.target.value);
+  function handleChangeShortMovie(isChecked) {
+    setShortMovie(isChecked);
+    search({ text, isShortMovie: isChecked });
   }
 
   return (
@@ -35,7 +33,7 @@ function SearchForm({ search }) {
               </div>
             </div>
             <fieldset className="search-form__checkbox">
-                <FilterCheckbox />
+                <FilterCheckbox isChecked={isShortMovie} setIsChecked={handleChangeShortMovie} />
                 <p className="search-form__text">Короткометражки</p>
             </fieldset>
         </form>

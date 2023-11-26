@@ -7,6 +7,10 @@ function Profile() {
   const editProfile = () => setEdit(true);
   const cancelEditProfile = () => setEdit(false);
 
+  function signOut() {
+    localStorage.clear();
+  }
+
   return (
     <>
         <Header />
@@ -42,7 +46,7 @@ function Profile() {
                 </div>
                 <div className="profile__link">
                   <button className="profile__edit" type="button" onClick={editProfile}>Редактировать</button>
-                  <button className="profile__logout" type="button">Выйти из аккаунта</button>
+                  <button className="profile__logout" type="button" onClick={signOut}>Выйти из аккаунта</button>
                 </div>
               </>
             }

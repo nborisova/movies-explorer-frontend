@@ -4,38 +4,67 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
 import Preloader from '../Preloader/Preloader';
-import cardImg from '../../images/card-image.png';
 import { MoviesApi } from '../../utils/MoviesApi';
 
 const moviesApi = new MoviesApi();
 
 function Movies() {
-  console.log(window.innerWidth)
-
   const [allMovies, setAllMovies] = React.useState([]);
   const [visibleMovies, setVisibleMovies] = React.useState([]);
   const [loadStatus, setLoadStatus] = React.useState('ok');
   const [errorText, setErrorText] = React.useState('');
   const [initialPageSize, setInitialPageSize] = React.useState(16);
   const [pageSize, setPageSize] = React.useState(4);
+  const [text, setText] = React.useState('');
+  const [isShortMovie, setShortMovie] = React.useState(false);
 
-  function calculatePageSize() {
+  // Отдает массив из 2х элементов: [начальный размер страницы, размер ряда]
+  function getPageSize() {
     if (window.innerWidth >= 1280) {
-      setInitialPageSize(16);
-      setPageSize(4);
+      return [16, 4];
     } else if (window.innerWidth >= 1005) {
-      setInitialPageSize(12);
-      setPageSize(3);
-    } else if (window.innerWidth >= 768) {
-      setInitialPageSize(8);
-      setPageSize(2);
+      return [12, 3];
+    } else if (window.innerWidth >= 744) {
+      return [8, 2];
     } else {
-      setInitialPageSize(5);
-      setPageSize(2);
+      return [5, 2];
     }
   }
 
   React.useEffect(() => {
+    function calculatePageSize() {
+      const [initialSize, size] = getPageSize();
+      setInitialPageSize(initialSize);
+      setPageSize(size);
+    }
+
+    let localStorageMovies = localStorage.getItem('movies');
+    if (localStorageMovies) {
+      localStorageMovies = JSON.parse(localStorageMovies);
+      setAllMovies(localStorageMovies);
+      setVisibleMovies(localStorageMovies.slice(0, getPageSize()[0]));
+    }
+
+    const localStorageText = localStorage.getItem('text');
+    if (localStorageText) {
+      setText(localStorageText);
+    }
+
+    let localStorageShortMovie = localStorage.getItem('isShortMovie');
+    if (localStorageShortMovie) {
+      localStorageShortMovie = JSON.parse(localStorageShortMovie);
+      setShortMovie(localStorageShortMovie);
+    }
+
+    const localStorageStatus = localStorage.getItem('loadStatus');
+    if (localStorageStatus) {
+      setLoadStatus(localStorageStatus);
+    }
+
+    const localStorageErrorText = localStorage.getItem('errorText');
+    if (localStorageErrorText) {
+      setErrorText(localStorageErrorText);
+    }
 
     calculatePageSize();
 
@@ -49,7 +78,11 @@ function Movies() {
     });
   }, []);
 
+  // дорисовывает ряд до конца
   React.useEffect(() => {
+    if (visibleMovies.length === allMovies.length) {
+      return;
+    }
     if (visibleMovies.length !== 0 && visibleMovies.length < initialPageSize) {
       setVisibleMovies(allMovies.slice(0, initialPageSize));
     } else if (visibleMovies.length % pageSize !== 0 && initialPageSize !== 5) {
@@ -79,15 +112,21 @@ function Movies() {
     .then(movies => {
       if (movies.length > 0) {
         setLoadStatus('ok');
+        localStorage.setItem('loadStatus', 'ok');
       } else {
         setErrorText('Ничего не найдено');
         setLoadStatus('error');
+        localStorage.setItem('loadStatus', 'error');
+        localStorage.setItem('errorText', 'Ничего не найдено')
       }
       return movies;
     })
     // Сохраняем все фильмы
     .then(movies => {
       setAllMovies(movies);
+      localStorage.setItem('movies', JSON.stringify(movies));
+      localStorage.setItem('text', text);
+      localStorage.setItem('isShortMovie', isShortMovie);
       return movies;
     })
     // Показываем первую страницу с фильмами
@@ -112,7 +151,7 @@ function Movies() {
     <>
       <Header />
       <main>
-        <SearchForm search={search}/>
+        <SearchForm search={search} text={text} setText={setText} isShortMovie={isShortMovie} setShortMovie={setShortMovie}/>
         { loadStatus === 'ok' ? <MoviesCardList
           movies={visibleMovies}
           hasMore={allMovies.length > visibleMovies.length}
