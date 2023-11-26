@@ -11,4 +11,21 @@ export class MainApi {
       return Promise.reject(`Ошибка: ${res.status}`);
     }
   }
+
+  saveMovie(movie) {
+    return fetch(`${this._baseUrl}/movies`, {
+      method: 'POST',
+      headers: this._headers,
+      body: JSON.stringify(movie),
+    })
+    .then(this._checkResponse);
+  }
+
+  deleteSavedMovie(movieId) {
+    return fetch(`${this._baseUrl}/movies/${movieId}`, {
+      method: 'DELETE',
+      headers: this._headers
+    })
+    .then(this._checkResponse);
+  }
 }

@@ -7,14 +7,46 @@ import Profile from '../Profile/Profile';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
 import NotFound from '../NotFound/NotFound';
+import { MainApi } from '../../utils/MainApi';
 
 function App() {
+  const [savedMovies, setSavedMovies] = React.useState([]);
+
+  let mainApi = initMainApi();
+
+  function initMainApi() {
+    return new MainApi({
+      // baseUrl: 'https://api.movies-nb.nomoredomainsrocks.ru',
+      baseUrl: 'http://localhost:4000',
+      headers: {
+        // TODO: брать токен из localStorage
+        // authorization: `Bearer ${localStorage.getItem('token')}`,
+        authorization: `Bearer ***`,
+        'Content-Type': 'application/json'
+      }
+    });
+  }
+
+  function saveMovie(movie) {
+    mainApi.saveMovie(movie)
+    .then(newMovie => setSavedMovies([newMovie, ...savedMovies]))
+    .catch(err => console.error(err));
+  }
+
+  function deleteMovie(movie) {
+    mainApi.deleteSavedMovie(movie.movieId)
+    .then(() => {
+      const filteredMovies = savedMovies.filter((item) => item.movieId !== movie.movieId);
+      setSavedMovies(filteredMovies);
+    })
+    .catch(err => console.error(err));
+  }
 
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/movies" element={<Movies />} />
+        <Route path="/movies" element={<Movies onSaveMovie={saveMovie} onDeleteMovie={deleteMovie}/>} />
         <Route path="/saved-movies" element={<SavedMovies />} />
         <Route path="/signup" element={<Register />} />
         <Route path="/signin" element={<Login />} />

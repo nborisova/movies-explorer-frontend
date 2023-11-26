@@ -8,7 +8,7 @@ import { MoviesApi } from '../../utils/MoviesApi';
 
 const moviesApi = new MoviesApi();
 
-function Movies() {
+function Movies({ onSaveMovie, onDeleteMovie }) {
   const [allMovies, setAllMovies] = React.useState([]);
   const [visibleMovies, setVisibleMovies] = React.useState([]);
   const [loadStatus, setLoadStatus] = React.useState('ok');
@@ -98,6 +98,33 @@ function Movies() {
 
     // Получение фильмов с сервера
     moviesApi.getMovies()
+    // меняем объект от сервера на формат нашего бэкенда
+    .then(movies => movies.map(({
+      country,
+      director,
+      duration,
+      year,
+      description,
+      image,
+      trailerLink,
+      id,
+      nameRU,
+      nameEN,
+    }) => {
+      return {
+        country,
+        director,
+        duration,
+        year,
+        description,
+        image: `https://api.nomoreparties.co${image.url}`,
+        trailerLink,
+        thumbnail: `https://api.nomoreparties.co${image.formats.thumbnail.url}`,
+        movieId: id,
+        nameRU,
+        nameEN,
+      };
+    }))
     // Фильтрация фильмов
     .then(movies => movies.filter((movie) => {
       if (isShortMovie && movie.duration > 40) {
@@ -156,6 +183,8 @@ function Movies() {
           movies={visibleMovies}
           hasMore={allMovies.length > visibleMovies.length}
           loadMore={loadMore}
+          onSaveMovie={onSaveMovie}
+          onDeleteMovie={onDeleteMovie}
         /> : '' }
         { loadStatus === 'loading' ? <Preloader /> : '' }
         { loadStatus === 'error' ? <div>{errorText}</div> : '' }
