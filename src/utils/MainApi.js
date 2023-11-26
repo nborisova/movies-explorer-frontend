@@ -12,6 +12,28 @@ export class MainApi {
     }
   }
 
+  register({ name, email, password }) {
+    return fetch(`${this._baseUrl}/signup`, {
+      method: 'POST',
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ name, email, password })
+    })
+    .then(this._checkResponse);
+  }
+
+  login({ email, password }) {
+    return fetch(`${this._baseUrl}/signin`, {
+      method: 'POST',
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ email, password })
+    })
+    .then(this._checkResponse);
+  }
+
   saveMovie(movie) {
     return fetch(`${this._baseUrl}/movies`, {
       method: 'POST',

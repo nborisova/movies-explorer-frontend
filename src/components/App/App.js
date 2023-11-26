@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
@@ -11,6 +11,7 @@ import { MainApi } from '../../utils/MainApi';
 
 function App() {
   const [savedMovies, setSavedMovies] = React.useState([]);
+  const navigate = useNavigate();
 
   let mainApi = initMainApi();
 
@@ -19,12 +20,17 @@ function App() {
       // baseUrl: 'https://api.movies-nb.nomoredomainsrocks.ru',
       baseUrl: 'http://localhost:4000',
       headers: {
-        // TODO: брать токен из localStorage
-        // authorization: `Bearer ${localStorage.getItem('token')}`,
-        authorization: `Bearer ***`,
+        authorization: `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json'
       }
     });
+  }
+
+  function handleLogin({ token }) {
+    localStorage.setItem('token', token);
+    mainApi = initMainApi();
+    navigate('/movies');
+
   }
 
   function saveMovie(movie) {
@@ -48,8 +54,8 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="/movies" element={<Movies onSaveMovie={saveMovie} onDeleteMovie={deleteMovie}/>} />
         <Route path="/saved-movies" element={<SavedMovies />} />
-        <Route path="/signup" element={<Register />} />
-        <Route path="/signin" element={<Login />} />
+        <Route path="/signup" element={<Register mainApi={mainApi} onLogin={handleLogin}/>} />
+        <Route path="/signin" element={<Login mainApi={mainApi} onLogin={handleLogin}/>} />
         <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

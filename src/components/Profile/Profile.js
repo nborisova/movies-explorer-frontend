@@ -1,14 +1,16 @@
 import React from 'react';
 import Header from '../Header/Header';
+import { useNavigate } from 'react-router-dom';
 
 function Profile() {
-
+  const navigate = useNavigate();
   const [isEdit, setEdit] = React.useState(false);
   const editProfile = () => setEdit(true);
   const cancelEditProfile = () => setEdit(false);
 
   function signOut() {
     localStorage.clear();
+    navigate('/');
   }
 
   return (
