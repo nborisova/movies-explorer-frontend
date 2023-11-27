@@ -8,10 +8,12 @@ import Login from '../Login/Login';
 import Register from '../Register/Register';
 import NotFound from '../NotFound/NotFound';
 import { MainApi } from '../../utils/MainApi';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 function App() {
   const [savedMovies, setSavedMovies] = React.useState([]);
   const navigate = useNavigate();
+  const [currentUser, setCurrentUser] = React.useState({});
 
   let mainApi = initMainApi();
 
@@ -29,8 +31,10 @@ function App() {
   function handleLogin({ token }) {
     localStorage.setItem('token', token);
     mainApi = initMainApi();
-    navigate('/movies');
-
+    mainApi.getCurrentUser()
+    .then(setCurrentUser)
+    .then(() => navigate('/movies'))
+    .catch(err => console.error(err));
   }
 
   function saveMovie(movie) {
@@ -50,15 +54,17 @@ function App() {
 
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/movies" element={<Movies onSaveMovie={saveMovie} onDeleteMovie={deleteMovie}/>} />
-        <Route path="/saved-movies" element={<SavedMovies />} />
-        <Route path="/signup" element={<Register mainApi={mainApi} onLogin={handleLogin}/>} />
-        <Route path="/signin" element={<Login mainApi={mainApi} onLogin={handleLogin}/>} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <CurrentUserContext.Provider value={currentUser}>
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/movies" element={<Movies onSaveMovie={saveMovie} onDeleteMovie={deleteMovie}/>} />
+          <Route path="/saved-movies" element={<SavedMovies />} />
+          <Route path="/signup" element={<Register mainApi={mainApi} onLogin={handleLogin}/>} />
+          <Route path="/signin" element={<Login mainApi={mainApi} onLogin={handleLogin}/>} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </CurrentUserContext.Provider>
     </div>
   );
 }

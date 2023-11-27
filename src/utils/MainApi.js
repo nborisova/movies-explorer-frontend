@@ -34,6 +34,13 @@ export class MainApi {
     .then(this._checkResponse);
   }
 
+  getCurrentUser() {
+    return fetch(`${this._baseUrl}/users/me`, {
+      headers: this._headers
+    })
+    .then(this._checkResponse);
+  }
+
   saveMovie(movie) {
     return fetch(`${this._baseUrl}/movies`, {
       method: 'POST',
