@@ -41,6 +41,14 @@ export class MainApi {
     .then(this._checkResponse);
   }
 
+  editProfile({ name, email }) {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({ name, email })})
+    .then(this._checkResponse);
+  }
+
   saveMovie(movie) {
     return fetch(`${this._baseUrl}/movies`, {
       method: 'POST',

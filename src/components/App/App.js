@@ -28,6 +28,12 @@ function App() {
     });
   }
 
+  React.useEffect(() => {
+    mainApi.getCurrentUser()
+    .then(setCurrentUser)
+    .catch(err => console.error(err));
+  }, [])
+
   function handleLogin({ token }) {
     localStorage.setItem('token', token);
     mainApi = initMainApi();
@@ -52,6 +58,14 @@ function App() {
     .catch(err => console.error(err));
   }
 
+  function handleUserUpdate(newUserData) {
+    setCurrentUser(newUserData);
+  }
+
+  function handleSignOut() {
+    setCurrentUser({});
+  }
+
   return (
     <div className="App">
       <CurrentUserContext.Provider value={currentUser}>
@@ -61,7 +75,7 @@ function App() {
           <Route path="/saved-movies" element={<SavedMovies />} />
           <Route path="/signup" element={<Register mainApi={mainApi} onLogin={handleLogin}/>} />
           <Route path="/signin" element={<Login mainApi={mainApi} onLogin={handleLogin}/>} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<Profile mainApi={mainApi} onUserUpdate={handleUserUpdate} onSignOut={handleSignOut}/>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </CurrentUserContext.Provider>

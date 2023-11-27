@@ -18,7 +18,7 @@ function Register({ mainApi, onLogin }) {
   const handleChange = (e) => {
     const {name, value} = e.target;
     setValues({ ...values, [name]: value });
-    setErrors({ ...errors, [name]: e.target.validationMessage ?  `${e.target.validationMessage} ${e.target.title}` : '' });
+    setErrors({ ...errors, [name]: e.target.validationMessage ? `${e.target.validationMessage} ${e.target.title}` : '' });
     setIsValid(e.target.closest('form').checkValidity());
   }
 
