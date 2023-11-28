@@ -12,8 +12,10 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 function App() {
   const [savedMovies, setSavedMovies] = React.useState([]);
-  const navigate = useNavigate();
   const [currentUser, setCurrentUser] = React.useState({});
+  const [loggedIn, setLoggedIn] = React.useState(false);
+
+  const navigate = useNavigate();
 
   let mainApi = initMainApi();
 
@@ -32,6 +34,11 @@ function App() {
     mainApi.getCurrentUser()
     .then(setCurrentUser)
     .catch(err => console.error(err));
+
+    mainApi.getSavedMovies()
+    .then(setSavedMovies)
+    .catch(err => console.error(err));
+
   }, [])
 
   function handleLogin({ token }) {
@@ -45,7 +52,7 @@ function App() {
 
   function saveMovie(movie) {
     mainApi.saveMovie(movie)
-    .then(newMovie => setSavedMovies([newMovie, ...savedMovies]))
+    .then(newMovie => setSavedMovies([...savedMovies, newMovie]))
     .catch(err => console.error(err));
   }
 
@@ -71,8 +78,8 @@ function App() {
       <CurrentUserContext.Provider value={currentUser}>
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="/movies" element={<Movies onSaveMovie={saveMovie} onDeleteMovie={deleteMovie}/>} />
-          <Route path="/saved-movies" element={<SavedMovies />} />
+          <Route path="/movies" element={<Movies onSaveMovie={saveMovie} onDeleteMovie={deleteMovie} savedMovies={savedMovies}/>} />
+          <Route path="/saved-movies" element={<SavedMovies savedMovies={savedMovies} onDeleteMovie={deleteMovie}/>} />
           <Route path="/signup" element={<Register mainApi={mainApi} onLogin={handleLogin}/>} />
           <Route path="/signin" element={<Login mainApi={mainApi} onLogin={handleLogin}/>} />
           <Route path="/profile" element={<Profile mainApi={mainApi} onUserUpdate={handleUserUpdate} onSignOut={handleSignOut}/>} />

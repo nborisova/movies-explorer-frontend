@@ -50,6 +50,7 @@ export class MainApi {
   }
 
   saveMovie(movie) {
+    delete movie.isSaved;
     return fetch(`${this._baseUrl}/movies`, {
       method: 'POST',
       headers: this._headers,
@@ -61,6 +62,13 @@ export class MainApi {
   deleteSavedMovie(movieId) {
     return fetch(`${this._baseUrl}/movies/${movieId}`, {
       method: 'DELETE',
+      headers: this._headers
+    })
+    .then(this._checkResponse);
+  }
+
+  getSavedMovies() {
+    return fetch(`${this._baseUrl}/movies`,{
       headers: this._headers
     })
     .then(this._checkResponse);

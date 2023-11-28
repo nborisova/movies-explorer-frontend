@@ -5,10 +5,11 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
 import Preloader from '../Preloader/Preloader';
 import { MoviesApi } from '../../utils/MoviesApi';
+import { filterMovies } from '../../utils/MovieUtils';
 
 const moviesApi = new MoviesApi();
 
-function Movies({ onSaveMovie, onDeleteMovie }) {
+function Movies({ onSaveMovie, onDeleteMovie, savedMovies }) {
   const [allMovies, setAllMovies] = React.useState([]);
   const [visibleMovies, setVisibleMovies] = React.useState([]);
   const [loadStatus, setLoadStatus] = React.useState('ok');
@@ -17,6 +18,22 @@ function Movies({ onSaveMovie, onDeleteMovie }) {
   const [pageSize, setPageSize] = React.useState(4);
   const [text, setText] = React.useState('');
   const [isShortMovie, setShortMovie] = React.useState(false);
+
+  React.useEffect(() => {
+    const savedMoviesIds = new Set(savedMovies.map(movie => movie.movieId));
+    const newAllMovies = allMovies.map(movie => {
+      return {...movie, isSaved: savedMoviesIds.has(movie.movieId)};
+    });
+    if (allMovies.some((movie, i) => movie.isSaved !== newAllMovies[i].isSaved)) {
+      setAllMovies(newAllMovies);
+    }
+    const newVisibleMovies = visibleMovies.map(movie => {
+      return {...movie, isSaved: savedMoviesIds.has(movie.movieId)};
+    });
+    if (visibleMovies.some((movie, i) => movie.isSaved !== newVisibleMovies[i].isSaved)) {
+      setVisibleMovies(newVisibleMovies);
+    }
+  }, [savedMovies, visibleMovies, allMovies]);
 
   // Отдает массив из 2х элементов: [начальный размер страницы, размер ряда]
   function getPageSize() {
@@ -94,8 +111,6 @@ function Movies({ onSaveMovie, onDeleteMovie }) {
   //TODO получать фильмы с сервера только 1 раз
   function search({ text, isShortMovie }) {
     setLoadStatus('loading');
-    const lowerText = text.toLowerCase()
-
     // Получение фильмов с сервера
     moviesApi.getMovies()
     // меняем объект от сервера на формат нашего бэкенда
@@ -126,15 +141,7 @@ function Movies({ onSaveMovie, onDeleteMovie }) {
       };
     }))
     // Фильтрация фильмов
-    .then(movies => movies.filter((movie) => {
-      if (isShortMovie && movie.duration > 40) {
-        return false;
-      }
-      if(!movie.nameRU.toLowerCase().includes(lowerText) && !movie.nameEN.toLowerCase().includes(lowerText)) {
-        return false;
-      }
-      return true;
-    }))
+    .then(movies => filterMovies(movies, { text, isShortMovie }))
     // Обновление блока с фильмами (или блока ошибки)
     .then(movies => {
       if (movies.length > 0) {

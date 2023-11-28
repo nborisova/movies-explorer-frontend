@@ -77,6 +77,20 @@
     background-color: #2BE080;
   }
 
+  .movie-card__delete-btn {
+    all: unset;
+    cursor: pointer;
+    background-image: url('../../images/delete-btn.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 24px;
+    height: 24px;
+  }
+
+  .movie-card__delete-btn:hover {
+    opacity: 70%;
+  }
+
   @media (max-width: 769px) {
     .movie-card__image {
       height: 190px;

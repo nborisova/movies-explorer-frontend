@@ -1,15 +1,19 @@
 import React from 'react';
 
 function MoviesCard({ movie, onSaveMovie, onDeleteMovie }) {
-  const [isSaved, setSave] = React.useState(false);
 
-  function saveMovie() {
-    setSave(!isSaved);
-    if (!isSaved) {
+  function handleSaveClick() {
+    if (!movie.isSaved) {
+      movie.isSaved = true;
       onSaveMovie(movie);
     } else {
+      movie.isSaved = false;
       onDeleteMovie(movie);
     }
+  }
+
+  function handleDeleteClick() {
+    onDeleteMovie(movie);
   }
 
   function calculateTime({ movie } ) {
@@ -35,8 +39,12 @@ function MoviesCard({ movie, onSaveMovie, onDeleteMovie }) {
                     <h2 className="movie-card__name">{movie.nameRU}</h2>
                     <div className="movie-card__duration">{calculateTime({ movie })}</div>
                 </div>
-                <button className={`movie-card__saved-btn ${isSaved ? "movie-card__saved-btn_on" : ""}`}
-                  type="button" onClick={saveMovie}></button>
+                {
+                  onSaveMovie
+                  ? <button className={`movie-card__saved-btn ${movie.isSaved ? "movie-card__saved-btn_on" : ""}`}
+                  type="button" onClick={handleSaveClick}></button>
+                  : <button className="movie-card__delete-btn" type="button" onClick={handleDeleteClick}></button>
+                }
             </div>
         </article>
     </li>
