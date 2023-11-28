@@ -14,7 +14,7 @@ import ProtectedRouteElement from '../ProtectedRoute';
 function App() {
   const [savedMovies, setSavedMovies] = React.useState([]);
   const [currentUser, setCurrentUser] = React.useState({});
-  const [loggedIn, setLoggedIn] = React.useState(false);
+  const [loggedIn, setLoggedIn] = React.useState(true);
 
   const navigate = useNavigate();
 
@@ -31,26 +31,40 @@ function App() {
     });
   }
 
-  React.useEffect(() => {
+  function loadInitialData(onSuccess) {
     mainApi.getCurrentUser()
     .then(setCurrentUser)
     .then(() => setLoggedIn(true))
-    .catch(err => console.error(err));
+    .then(() => {
+      if (onSuccess) {
+        onSuccess();
+      }
+    })
+    .catch(err => {
+      setLoggedIn(false);
+      console.error(err);
+    });
 
     mainApi.getSavedMovies()
     .then(setSavedMovies)
     .catch(err => console.error(err));
+  }
 
+  // Загрузка данных пользователя и сохраненных фильмов
+  React.useEffect(() => {
+    if (!localStorage.getItem('token')) {
+      setLoggedIn(false);
+      return;
+    }
+
+    loadInitialData();
   }, [])
 
   function handleLogin({ token }) {
     localStorage.setItem('token', token);
     mainApi = initMainApi();
-    mainApi.getCurrentUser()
-    .then(setCurrentUser)
-    .then(() => setLoggedIn(true))
-    .then(() => navigate('/movies'))
-    .catch(err => console.error(err));
+
+    loadInitialData(() => navigate('/movies'));
   }
 
   function saveMovie(movie) {
