@@ -10,7 +10,8 @@ import { filterMovies } from '../../utils/MovieUtils';
 const moviesApi = new MoviesApi();
 
 function Movies({ onSaveMovie, onDeleteMovie, savedMovies }) {
-  const [allMovies, setAllMovies] = React.useState([]);
+  const [allMovies, setAllMovies] = React.useState();
+  const [filteredMovies, setFilteredMovies] = React.useState([]);
   const [visibleMovies, setVisibleMovies] = React.useState([]);
   const [loadStatus, setLoadStatus] = React.useState('ok');
   const [errorText, setErrorText] = React.useState('');
@@ -21,11 +22,11 @@ function Movies({ onSaveMovie, onDeleteMovie, savedMovies }) {
 
   React.useEffect(() => {
     const savedMoviesIds = new Set(savedMovies.map(movie => movie.movieId));
-    const newAllMovies = allMovies.map(movie => {
+    const newFilteredMovies = filteredMovies.map(movie => {
       return {...movie, isSaved: savedMoviesIds.has(movie.movieId)};
     });
-    if (allMovies.some((movie, i) => movie.isSaved !== newAllMovies[i].isSaved)) {
-      setAllMovies(newAllMovies);
+    if (filteredMovies.some((movie, i) => movie.isSaved !== newFilteredMovies[i].isSaved)) {
+      setFilteredMovies(newFilteredMovies);
     }
     const newVisibleMovies = visibleMovies.map(movie => {
       return {...movie, isSaved: savedMoviesIds.has(movie.movieId)};
@@ -33,7 +34,7 @@ function Movies({ onSaveMovie, onDeleteMovie, savedMovies }) {
     if (visibleMovies.some((movie, i) => movie.isSaved !== newVisibleMovies[i].isSaved)) {
       setVisibleMovies(newVisibleMovies);
     }
-  }, [savedMovies, visibleMovies, allMovies]);
+  }, [savedMovies, visibleMovies, filteredMovies]);
 
   // Отдает массив из 2х элементов: [начальный размер страницы, размер ряда]
   function getPageSize() {
@@ -58,7 +59,7 @@ function Movies({ onSaveMovie, onDeleteMovie, savedMovies }) {
     let localStorageMovies = localStorage.getItem('movies');
     if (localStorageMovies) {
       localStorageMovies = JSON.parse(localStorageMovies);
-      setAllMovies(localStorageMovies);
+      setFilteredMovies(localStorageMovies);
       setVisibleMovies(localStorageMovies.slice(0, getPageSize()[0]));
     }
 
@@ -97,88 +98,91 @@ function Movies({ onSaveMovie, onDeleteMovie, savedMovies }) {
 
   // дорисовывает ряд до конца
   React.useEffect(() => {
-    if (visibleMovies.length === allMovies.length) {
+    if (visibleMovies.length === filteredMovies.length) {
       return;
     }
     if (visibleMovies.length !== 0 && visibleMovies.length < initialPageSize) {
-      setVisibleMovies(allMovies.slice(0, initialPageSize));
+      setVisibleMovies(filteredMovies.slice(0, initialPageSize));
     } else if (visibleMovies.length % pageSize !== 0 && initialPageSize !== 5) {
       const rowsCount = Math.ceil(visibleMovies.length / pageSize);
-      setVisibleMovies(allMovies.slice(0, rowsCount * pageSize));
+      setVisibleMovies(filteredMovies.slice(0, rowsCount * pageSize));
     }
-  }, [pageSize, initialPageSize, visibleMovies, allMovies]);
+  }, [pageSize, initialPageSize, visibleMovies, filteredMovies]);
 
-  //TODO получать фильмы с сервера только 1 раз
+  function updateMovies(movies, { text, isShortMovie }) {
+    // Фильтрация фильмов
+    movies = filterMovies(movies, { text, isShortMovie });
+    // Обновление блока с фильмами (или блока ошибки)
+    if (movies.length > 0) {
+      setLoadStatus('ok');
+      localStorage.setItem('loadStatus', 'ok');
+    } else {
+      setErrorText('Ничего не найдено');
+      setLoadStatus('error');
+      localStorage.setItem('loadStatus', 'error');
+      localStorage.setItem('errorText', 'Ничего не найдено')
+    }
+    // Сохраняем все фильмы
+    setFilteredMovies(movies);
+    localStorage.setItem('movies', JSON.stringify(movies));
+    localStorage.setItem('text', text);
+    localStorage.setItem('isShortMovie', isShortMovie);
+    // Показываем первую страницу с фильмами
+    setVisibleMovies(movies.slice(0, initialPageSize));
+  }
+
   function search({ text, isShortMovie }) {
-    setLoadStatus('loading');
-    // Получение фильмов с сервера
-    moviesApi.getMovies()
-    // меняем объект от сервера на формат нашего бэкенда
-    .then(movies => movies.map(({
-      country,
-      director,
-      duration,
-      year,
-      description,
-      image,
-      trailerLink,
-      id,
-      nameRU,
-      nameEN,
-    }) => {
-      return {
+    if (allMovies) {
+      updateMovies(allMovies, { text, isShortMovie });
+    } else {
+      setLoadStatus('loading');
+      // Получение фильмов с сервера
+      moviesApi.getMovies()
+      // меняем объект от сервера на формат нашего бэкенда
+      .then(movies => movies.map(({
         country,
         director,
         duration,
         year,
         description,
-        image: `https://api.nomoreparties.co${image.url}`,
+        image,
         trailerLink,
-        thumbnail: `https://api.nomoreparties.co${image.formats.thumbnail.url}`,
-        movieId: id,
+        id,
         nameRU,
         nameEN,
-      };
-    }))
-    // Фильтрация фильмов
-    .then(movies => filterMovies(movies, { text, isShortMovie }))
-    // Обновление блока с фильмами (или блока ошибки)
-    .then(movies => {
-      if (movies.length > 0) {
-        setLoadStatus('ok');
-        localStorage.setItem('loadStatus', 'ok');
-      } else {
-        setErrorText('Ничего не найдено');
+      }) => {
+        return {
+          country,
+          director,
+          duration,
+          year,
+          description,
+          image: `https://api.nomoreparties.co${image.url}`,
+          trailerLink,
+          thumbnail: `https://api.nomoreparties.co${image.formats.thumbnail.url}`,
+          movieId: id,
+          nameRU,
+          nameEN,
+        };
+      }))
+      .then(movies => {
+        setAllMovies(movies);
+        updateMovies(movies, { text, isShortMovie });
+      })
+      .catch(err => {
+        console.log(err);
+        setErrorText(
+          `Во время запроса произошла ошибка.
+          Возможно, проблема с соединением или сервер недоступен.
+          Подождите немного и попробуйте ещё раз`
+        );
         setLoadStatus('error');
-        localStorage.setItem('loadStatus', 'error');
-        localStorage.setItem('errorText', 'Ничего не найдено')
-      }
-      return movies;
-    })
-    // Сохраняем все фильмы
-    .then(movies => {
-      setAllMovies(movies);
-      localStorage.setItem('movies', JSON.stringify(movies));
-      localStorage.setItem('text', text);
-      localStorage.setItem('isShortMovie', isShortMovie);
-      return movies;
-    })
-    // Показываем первую страницу с фильмами
-    .then(movies => setVisibleMovies(movies.slice(0, initialPageSize)))
-    // Обработка ошибок
-    .catch(err => {
-      console.log(err);
-      setErrorText(
-        `Во время запроса произошла ошибка.
-        Возможно, проблема с соединением или сервер недоступен.
-        Подождите немного и попробуйте ещё раз`
-      );
-      setLoadStatus('error');
-    });
+      });
+    }
   }
 
   function loadMore() {
-    setVisibleMovies(allMovies.slice(0, visibleMovies.length + pageSize));
+    setVisibleMovies(filteredMovies.slice(0, visibleMovies.length + pageSize));
   }
 
   return (
@@ -188,7 +192,7 @@ function Movies({ onSaveMovie, onDeleteMovie, savedMovies }) {
         <SearchForm search={search} text={text} setText={setText} isShortMovie={isShortMovie} setShortMovie={setShortMovie}/>
         { loadStatus === 'ok' ? <MoviesCardList
           movies={visibleMovies}
-          hasMore={allMovies.length > visibleMovies.length}
+          hasMore={filteredMovies.length > visibleMovies.length}
           loadMore={loadMore}
           onSaveMovie={onSaveMovie}
           onDeleteMovie={onDeleteMovie}
