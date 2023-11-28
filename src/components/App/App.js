@@ -61,6 +61,7 @@ function App() {
   }, [])
 
   function handleLogin({ token }) {
+    localStorage.clear();
     localStorage.setItem('token', token);
     mainApi = initMainApi();
 
