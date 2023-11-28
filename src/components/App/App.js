@@ -22,8 +22,8 @@ function App() {
 
   function initMainApi() {
     return new MainApi({
-      // baseUrl: 'https://api.movies-nb.nomoredomainsrocks.ru',
-      baseUrl: 'http://localhost:4000',
+      baseUrl: 'https://api.movies-nb.nomoredomainsrocks.ru',
+      // baseUrl: 'http://localhost:4000',
       headers: {
         authorization: `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json'

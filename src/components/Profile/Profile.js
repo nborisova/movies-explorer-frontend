@@ -17,6 +17,7 @@ function Profile({ mainApi, onUserUpdate, onSignOut }) {
     form: '',
   });
   const [isValid, setIsValid] = React.useState(false);
+  const[isUpdated, setIsUpdated] = React.useState(false);
 
   React.useEffect(() => {
     setValues({
@@ -25,7 +26,10 @@ function Profile({ mainApi, onUserUpdate, onSignOut }) {
     });
   }, [currentUser]);
 
-  const editProfile = () => setEdit(true);
+  const editProfile = () => {
+    setIsUpdated(false);
+    setEdit(true);
+  };
   const cancelEditProfile = () => setEdit(false);
 
   const handleChange = (e) => {
@@ -42,7 +46,10 @@ function Profile({ mainApi, onUserUpdate, onSignOut }) {
 
     mainApi.editProfile(values)
     .then(onUserUpdate)
-    .then(cancelEditProfile)
+    .then(() => {
+      setIsUpdated(true);
+      cancelEditProfile();
+    })
     .catch(err => setErrors({...errors, form: 'При изменении данных произошла ошибка.' }));
   }
 
@@ -87,6 +94,11 @@ function Profile({ mainApi, onUserUpdate, onSignOut }) {
                   <p className="profile__user-email">{currentUser.email}</p>
                 </div>
                 <div className="profile__link">
+                  {
+                    isUpdated
+                    ? <span className="profile__success-msg">Данные профиля успешно сохранены</span>
+                    : ''
+                  }
                   <button className="profile__edit" type="button" onClick={editProfile}>Редактировать</button>
                   <button className="profile__logout" type="button" onClick={signOut}>Выйти из аккаунта</button>
                 </div>

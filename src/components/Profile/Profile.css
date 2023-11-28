@@ -222,6 +222,17 @@
   align-self: flex-start;
 }
 
+.profile__success-msg {
+  padding-bottom: 15px;
+  width: 100%;
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 12.1px;
+  color: #2BE080;
+  align-self: flex-start;
+}
+
 .profile__submit-btn {
   border: none;
   width: 396px;
