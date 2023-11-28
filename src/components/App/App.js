@@ -9,6 +9,7 @@ import Register from '../Register/Register';
 import NotFound from '../NotFound/NotFound';
 import { MainApi } from '../../utils/MainApi';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import ProtectedRouteElement from '../ProtectedRoute';
 
 function App() {
   const [savedMovies, setSavedMovies] = React.useState([]);
@@ -33,6 +34,7 @@ function App() {
   React.useEffect(() => {
     mainApi.getCurrentUser()
     .then(setCurrentUser)
+    .then(() => setLoggedIn(true))
     .catch(err => console.error(err));
 
     mainApi.getSavedMovies()
@@ -46,6 +48,7 @@ function App() {
     mainApi = initMainApi();
     mainApi.getCurrentUser()
     .then(setCurrentUser)
+    .then(() => setLoggedIn(true))
     .then(() => navigate('/movies'))
     .catch(err => console.error(err));
   }
@@ -71,6 +74,7 @@ function App() {
 
   function handleSignOut() {
     setCurrentUser({});
+    setLoggedIn(false);
   }
 
   return (
@@ -78,11 +82,20 @@ function App() {
       <CurrentUserContext.Provider value={currentUser}>
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="/movies" element={<Movies onSaveMovie={saveMovie} onDeleteMovie={deleteMovie} savedMovies={savedMovies}/>} />
-          <Route path="/saved-movies" element={<SavedMovies savedMovies={savedMovies} onDeleteMovie={deleteMovie}/>} />
+          <Route path="/movies" element={
+            <ProtectedRouteElement loggedIn={loggedIn} element={Movies} onSaveMovie={saveMovie}
+            onDeleteMovie={deleteMovie} savedMovies={savedMovies} />
+            } />
+          <Route path="/saved-movies" element={
+            <ProtectedRouteElement loggedIn={loggedIn} element={SavedMovies} savedMovies={savedMovies}
+            onDeleteMovie={deleteMovie} />
+            } />
+          <Route path="/profile" element={
+            <ProtectedRouteElement loggedIn={loggedIn} element={Profile} mainApi={mainApi}
+            onUserUpdate={handleUserUpdate} onSignOut={handleSignOut} />
+            } />
           <Route path="/signup" element={<Register mainApi={mainApi} onLogin={handleLogin}/>} />
           <Route path="/signin" element={<Login mainApi={mainApi} onLogin={handleLogin}/>} />
-          <Route path="/profile" element={<Profile mainApi={mainApi} onUserUpdate={handleUserUpdate} onSignOut={handleSignOut}/>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </CurrentUserContext.Provider>
