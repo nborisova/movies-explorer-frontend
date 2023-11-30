@@ -13,7 +13,7 @@ function AuthPage({ title, children, buttonText, text, link, linkText, onChange,
             <fieldset className="auth-page__fieldset">
                 {children}
                 <label for="email-input" className="auth-page__label">E-mail</label>
-                <input id="email-input" name="email" className="auth-page__input" placeholder="Email" type="email"
+                <input id="email-input" name="email" className="auth-page__input" placeholder="Email"
                 maxLength="40" minLength="2" onChange={onChange} value={values.email} required/>
                 <div className="auth-page__line"></div>
                 <span className="auth-page__field-error">{errors.email}</span>

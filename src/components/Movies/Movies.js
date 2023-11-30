@@ -38,11 +38,11 @@ function Movies({ onSaveMovie, onDeleteMovie, savedMovies }) {
 
   // Отдает массив из 2х элементов: [начальный размер страницы, размер ряда]
   function getPageSize() {
-    if (window.innerWidth >= 1280) {
+    if (window.innerWidth > 1279) {
       return [16, 4];
-    } else if (window.innerWidth >= 1005) {
+    } else if (window.innerWidth > 1004) {
       return [12, 3];
-    } else if (window.innerWidth >= 744) {
+    } else if (window.innerWidth > 743) {
       return [8, 2];
     } else {
       return [5, 2];

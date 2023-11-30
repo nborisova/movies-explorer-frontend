@@ -1,5 +1,6 @@
 import React from 'react';
 import AuthPage from '../AuthPage/AuthPage';
+import validator from 'validator';
 
 function Register({ mainApi, onLogin }) {
   const [values, setValues] = React.useState({
@@ -17,6 +18,11 @@ function Register({ mainApi, onLogin }) {
 
   const handleChange = (e) => {
     const {name, value} = e.target;
+
+    if (name === 'email') {
+      const validationMessage = validator.isEmail(value) ? '' : 'Некорректный email';
+      e.target.setCustomValidity(validationMessage);
+    }
     setValues({ ...values, [name]: value });
     setErrors({ ...errors, [name]: e.target.validationMessage ? `${e.target.validationMessage} ${e.target.title}` : '' });
     setIsValid(e.target.closest('form').checkValidity());

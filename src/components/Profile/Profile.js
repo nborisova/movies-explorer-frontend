@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../Header/Header';
 import { useNavigate } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import validator from 'validator';
 
 function Profile({ mainApi, onUserUpdate, onSignOut }) {
   const navigate = useNavigate();
@@ -36,6 +37,11 @@ function Profile({ mainApi, onUserUpdate, onSignOut }) {
     const {name, value} = e.target;
     const newValues = { ...values, [name]: value };
     const isChanged = currentUser.name !== newValues.name || currentUser.email !== newValues.email;
+
+    if (name === 'email') {
+      const validationMessage = validator.isEmail(value) ? '' : 'Некорректный email';
+      e.target.setCustomValidity(validationMessage);
+    }
     setValues(newValues);
     setErrors({ ...errors, [name]: e.target.validationMessage ? `${e.target.validationMessage} ${e.target.title}` : '' });
     setIsValid(e.target.closest('form').checkValidity() && isChanged);

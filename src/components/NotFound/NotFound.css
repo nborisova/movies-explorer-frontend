@@ -30,6 +30,8 @@
 }
 
 .not-found__link {
+    all: unset;
+    cursor: pointer;
     font-family: Inter;
     font-weight: 400;
     font-size: 14px;

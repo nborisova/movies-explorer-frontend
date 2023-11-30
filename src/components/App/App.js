@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
@@ -14,7 +14,9 @@ import ProtectedRouteElement from '../ProtectedRoute';
 function App() {
   const [savedMovies, setSavedMovies] = React.useState([]);
   const [currentUser, setCurrentUser] = React.useState({});
-  const [loggedIn, setLoggedIn] = React.useState(true);
+  // Пока loggedIn === undefined, не рисуем страницы, которые закрыты авторизацией,
+  // но и не пускаем на страницы входа и регистрации
+  const [loggedIn, setLoggedIn] = React.useState();
 
   const navigate = useNavigate();
 
@@ -92,6 +94,16 @@ function App() {
     setLoggedIn(false);
   }
 
+  function AuthRoute({ element: Component }) {
+    if (loggedIn) {
+      return <Navigate to="/movies"/>;
+    } else if (loggedIn === false) {
+      return <Component mainApi={mainApi} onLogin={handleLogin}/>;
+    } else {
+      return <></>;
+    }
+  }
+
   return (
     <div className="App">
       <CurrentUserContext.Provider value={currentUser}>
@@ -109,8 +121,8 @@ function App() {
             <ProtectedRouteElement loggedIn={loggedIn} element={Profile} mainApi={mainApi}
             onUserUpdate={handleUserUpdate} onSignOut={handleSignOut} />
             } />
-          <Route path="/signup" element={<Register mainApi={mainApi} onLogin={handleLogin}/>} />
-          <Route path="/signin" element={<Login mainApi={mainApi} onLogin={handleLogin}/>} />
+          <Route path="/signup" element={<AuthRoute element={Register}/>} />
+          <Route path="/signin" element={<AuthRoute element={Login}/>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </CurrentUserContext.Provider>

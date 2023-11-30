@@ -12,6 +12,10 @@ function SavedMovies({ savedMovies, onDeleteMovie }) {
 
   const movies = visibleMovies ?? savedMovies;
 
+  React.useEffect(() => {
+    search({ text, isShortMovie });
+  }, [savedMovies])
+
   function search({ text, isShortMovie }) {
     const filteredMovies = filterMovies(savedMovies, { text, isShortMovie });
     setVisibleMovies(filteredMovies);
