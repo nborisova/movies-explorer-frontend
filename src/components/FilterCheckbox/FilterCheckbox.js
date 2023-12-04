@@ -1,8 +1,13 @@
 import React from 'react';
 
-function FilterCheckbox() {
+function FilterCheckbox({ isChecked, setIsChecked }) {
+
+  function handleChecked() {
+    setIsChecked(!isChecked);
+  }
+
   return (
-    <button class="switch-btn switch-btn_on" type="button"></button>
+      <button className={`switch-btn ${isChecked ? "switch-btn_on" : ""}`} type="button" onClick={handleChecked}></button>
   );
 }
 

@@ -1,25 +1,131 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import Main from '../Main/Main';
-import Movies from '../Movies/Movies'; 
+import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
 import NotFound from '../NotFound/NotFound';
+import { MainApi } from '../../utils/MainApi';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import ProtectedRouteElement from '../ProtectedRoute';
 
 function App() {
+  const [savedMovies, setSavedMovies] = React.useState([]);
+  const [currentUser, setCurrentUser] = React.useState({});
+  // Пока loggedIn === undefined, не рисуем страницы, которые закрыты авторизацией,
+  // но и не пускаем на страницы входа и регистрации
+  const [loggedIn, setLoggedIn] = React.useState();
+
+  const navigate = useNavigate();
+
+  let mainApi = initMainApi();
+
+  function initMainApi() {
+    return new MainApi({
+      baseUrl: 'https://api.movies-nb.nomoredomainsrocks.ru',
+      // baseUrl: 'http://localhost:4000',
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json'
+      }
+    });
+  }
+
+  function loadInitialData(onSuccess) {
+    mainApi.getCurrentUser()
+    .then(setCurrentUser)
+    .then(() => setLoggedIn(true))
+    .then(() => {
+      if (onSuccess) {
+        onSuccess();
+      }
+    })
+    .catch(err => {
+      setLoggedIn(false);
+      console.error(err);
+    });
+
+    mainApi.getSavedMovies()
+    .then(setSavedMovies)
+    .catch(err => console.error(err));
+  }
+
+  // Загрузка данных пользователя и сохраненных фильмов
+  React.useEffect(() => {
+    if (!localStorage.getItem('token')) {
+      setLoggedIn(false);
+      return;
+    }
+
+    loadInitialData();
+  }, [])
+
+  function handleLogin({ token }) {
+    localStorage.clear();
+    localStorage.setItem('token', token);
+    mainApi = initMainApi();
+
+    loadInitialData(() => navigate('/movies'));
+  }
+
+  function saveMovie(movie) {
+    mainApi.saveMovie(movie)
+    .then(newMovie => setSavedMovies([...savedMovies, newMovie]))
+    .catch(err => console.error(err));
+  }
+
+  function deleteMovie(movie) {
+    mainApi.deleteSavedMovie(movie.movieId)
+    .then(() => {
+      const filteredMovies = savedMovies.filter((item) => item.movieId !== movie.movieId);
+      setSavedMovies(filteredMovies);
+    })
+    .catch(err => console.error(err));
+  }
+
+  function handleUserUpdate(newUserData) {
+    setCurrentUser(newUserData);
+  }
+
+  function handleSignOut() {
+    setCurrentUser({});
+    setLoggedIn(false);
+  }
+
+  function AuthRoute({ element: Component }) {
+    if (loggedIn) {
+      return <Navigate to="/movies"/>;
+    } else if (loggedIn === false) {
+      return <Component mainApi={mainApi} onLogin={handleLogin}/>;
+    } else {
+      return <></>;
+    }
+  }
+
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/saved-movies" element={<SavedMovies />} />
-        <Route path="/signup" element={<Register />} />
-        <Route path="/signin" element={<Login />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="*" element={<NotFound />} /> 
-      </Routes>
+      <CurrentUserContext.Provider value={currentUser}>
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/movies" element={
+            <ProtectedRouteElement loggedIn={loggedIn} element={Movies} onSaveMovie={saveMovie}
+            onDeleteMovie={deleteMovie} savedMovies={savedMovies} />
+            } />
+          <Route path="/saved-movies" element={
+            <ProtectedRouteElement loggedIn={loggedIn} element={SavedMovies} savedMovies={savedMovies}
+            onDeleteMovie={deleteMovie} />
+            } />
+          <Route path="/profile" element={
+            <ProtectedRouteElement loggedIn={loggedIn} element={Profile} mainApi={mainApi}
+            onUserUpdate={handleUserUpdate} onSignOut={handleSignOut} />
+            } />
+          <Route path="/signup" element={<AuthRoute element={Register}/>} />
+          <Route path="/signin" element={<AuthRoute element={Login}/>} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </CurrentUserContext.Provider>
     </div>
   );
 }

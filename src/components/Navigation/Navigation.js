@@ -1,10 +1,20 @@
 import React from "react";
 import { useNavigate, NavLink } from 'react-router-dom';
-import iconProfile from '../../images/icon-profile.svg'
+import iconProfile from '../../images/icon-profile.svg';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 function Navigation() {
-  const loggedIn = true;
+  const [loggedIn, setLoggedIn] = React.useState(false);
   const navigate = useNavigate();
+  const currentUser = React.useContext(CurrentUserContext);
+
+  React.useEffect(() => {
+    if (Object.keys(currentUser).length !== 0) {
+      setLoggedIn(true);
+    } else {
+      setLoggedIn(false);
+    }
+  }, [currentUser]);
 
   function signIn() {
     navigate('/signin');
